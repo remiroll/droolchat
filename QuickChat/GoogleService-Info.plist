@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>659151998844-qp4k0fbvl9c3vh18onvi30t4m8v2oro5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.659151998844-qp4k0fbvl9c3vh18onvi30t4m8v2oro5</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDvcNihT5V_lUOGxaye94O03WI-QFbciBY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>659151998844</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.droolchat.QuickChat</string>
+	<key>PROJECT_ID</key>
+	<string>droolmessenger</string>
+	<key>STORAGE_BUCKET</key>
+	<string>droolmessenger.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:659151998844:ios:7723ebeee7caadf6</string>
+	<key>DATABASE_URL</key>
+	<string>https://droolmessenger.firebaseio.com</string>
+</dict>
+</plist>
