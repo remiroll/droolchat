@@ -61,19 +61,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        setupGlidingCollection()
+        
         FIRApp.configure()
         UINavigationBar.appearance().setBackgroundImage(UIImage(named: "navigation")!.resizableImage(withCapInsets: UIEdgeInsetsMake(0, 0, 0, 0), resizingMode: .stretch), for: .default)
         UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         return true
     }
     
-    func setupGlidingCollection() {
-        var config = GlidingConfig.shared
-        config.buttonsFont = UIFont.boldSystemFont(ofSize: 22)
-        config.inactiveButtonsColor = config.activeButtonColor
-        GlidingConfig.shared = config
-    }
+
     
 
     

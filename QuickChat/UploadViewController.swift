@@ -19,12 +19,15 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     
     var picker = UIImagePickerController()
-    var cat = ["Breakfast", "Lunch", "Dinner", "Snacks"]
-    var selectedcat: String!
+    var cat = ["Food", "Recipes", "Videos", "Favourites"]
+    var selectedcat: String! = "Food"
+    var name: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        
         picker.delegate = self
     
     }

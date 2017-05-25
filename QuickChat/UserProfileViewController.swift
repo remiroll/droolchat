@@ -45,8 +45,7 @@ class UserProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setup()
+  
         fetchPosts()
 
         
@@ -75,6 +74,7 @@ class UserProfileViewController: UIViewController {
         //When the followers count is changed, it is updated here!
         //need to add the uid to the user's data
         databaseRef.child("users").child(self.otherUser?["uid"] as! String).observe(.value, with: { (snapshot) in
+           // databaseRef.child("users").child(self.loggedInUser!.uid).child("credentials").child(self.otherUser?["uid"] as! String).observe(.value, with: { (snapshot) in
             
             let uid = self.otherUser?["uid"] as! String
             self.otherUser = snapshot.value as? NSDictionary
@@ -202,8 +202,10 @@ class UserProfileViewController: UIViewController {
         
         //no uid source in firebase
        
-        let uid = self.otherUser?["uid"] as! String
-        //let uid = FIRAuth.auth()!.currentUser!.uid
+        //let uid = self.otherUser?["uid"] as! String
+        
+        //databaseRef.child("users").child(self.otherUser?["uid"] as! String
+        let uid = FIRAuth.auth()!.currentUser!.uid
         let ref = FIRDatabase.database().reference()
             
         
@@ -220,7 +222,7 @@ class UserProfileViewController: UIViewController {
                     self.posts.append(post)
                 }
                 
-                self.sortPosts()
+               
                 
                 self.glidingView.reloadData()
                 self.collectionView.reloadData()
@@ -236,151 +238,11 @@ class UserProfileViewController: UIViewController {
     }
     
     
-    func sortPosts() {
-        
-        for post in posts {
-            
-            if post.catagory == "Breakfast" {
-                breakPosts.append(post)
-                
-            }
-            
-            if post.catagory == "Lunch" {
-                lunchPosts.append(post)
-            }
-            
-            if post.catagory == "Dinner" {
-                dinnerPosts.append(post)
-            }
-            
-            if post.catagory == "Snacks" {
-                snackPosts.append(post)
-            }
-            
-            
-        }
-        
-        self.glidingView.reloadData()
-    }
-    
-}
-
-
-// MARK: - Setup
-extension UserProfileViewController {
-    
-    func setup() {
-        setupGlidingCollectionView()
-        //loadImages()
-    }
-    
-    func setupGlidingCollectionView() {
-        glidingView.dataSource = self
-        
-        let nib = UINib(nibName: "CollectionCell", bundle: nil)
-        collectionView = glidingView.collectionView
-        collectionView.register(nib, forCellWithReuseIdentifier: "Cell")
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = glidingView.backgroundColor
-    }
-    
-    
-    
-
-    
-//    func loadImages() {
-//        for item in items {
-//            let imageURLs = FileManager.default.fileUrls(for: "jpeg", fileName: item)
-//            var images: [UIImage?] = []
-//            for url in imageURLs {
-//                guard let data = try? Data(contentsOf: url) else { continue }
-//                let image = UIImage(data: data)
-//                images.append(image)
-//            }
-//            self.images.append(images)
-//        }
-//    }
-    
-}
 
 
 
 
 
-
-
-// MARK: - CollectionView 🎛
-extension UserProfileViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let section = glidingView.expandedItemIndex
-        if section == 0  {
-            return breakPosts.count
-        }
-        
-        
-        if section == 1 {
-            return lunchPosts.count
-        }
-        
-        if section == 2 {
-            return dinnerPosts.count
-        }
-        
-        if section == 3 {
-            return snackPosts.count
-        }
-        
-        return 0
-    }
-    
-    
-func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? CollectionCell else { return UICollectionViewCell() }
-    
-    let section = glidingView.expandedItemIndex
-    var post: String!
-    
-    
-    if section == 0  {
-        post =  breakPosts[indexPath.row].pathToImage
-    }
-    
-    if section == 1 {
-        post =  lunchPosts[indexPath.row].pathToImage
-    }
-    
-    if section == 2 {
-        post =  dinnerPosts[indexPath.row].pathToImage
-    }
-    
-    if section == 3 {
-        post =  snackPosts[indexPath.row].pathToImage
-    }
-    
-    cell.imageView.downloadImage(from: post)
-    cell.contentView.clipsToBounds = true
-    
-    let layer = cell.layer
-    let config = GlidingConfig.shared
-    layer.shadowOffset = config.cardShadowOffset
-    layer.shadowColor = config.cardShadowColor.cgColor
-    layer.shadowOpacity = config.cardShadowOpacity
-    layer.shadowRadius = config.cardShadowRadius
-    
-    layer.shouldRasterize = true
-    layer.rasterizationScale = UIScreen.main.scale
-    
-    return cell
-}
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let section = glidingView.expandedItemIndex
-        let item = indexPath.item
-        print("Selected item #\(item) in section #\(section)")
-    }
-    
     
 }
 
