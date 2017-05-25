@@ -48,11 +48,13 @@ class PhotosCollectionViewController: UICollectionViewController, UIViewControll
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: itemWidth, height: itemWidth)
         
+        navigationController?.hidesBarsOnSwipe = true
+        
         self.customization()
         
         fetchPosts()
         
-        menuButton.layer.cornerRadius = menuButton.frame.size.width / 2
+        //menuButton.layer.cornerRadius = menuButton.frame.size.width / 2
     }
     
     lazy var leftButton: UIBarButtonItem = {
@@ -215,11 +217,11 @@ class PhotosCollectionViewController: UICollectionViewController, UIViewControll
             detailVC.image = sender as! UIImage
         }
      
-        if segue.identifier == "menu" {
-            let secondVC = segue.destination as! SecondViewController
-            secondVC.transitioningDelegate = self
-            secondVC.modalPresentationStyle = .custom
-        }
+//        if segue.identifier == "menu" {
+//            let secondVC = segue.destination as! SecondViewController
+//            secondVC.transitioningDelegate = self
+//            secondVC.modalPresentationStyle = .custom
+//        }
         
     }
     

@@ -42,23 +42,23 @@ class PhotosLibrary
     {
         
         return [
-            "Recipes" : [
-                "categoryImageName" : "recipes",
-                "imageNames" : [String](),
-            ],
-            "Food" : [
-                "categoryImageName" : "foods",
-                "imageNames" : [String](),
-            ],
-            "Videos" : [
-                "categoryImageName" : "videos",
-                "imageNames" : [String](),
-            ],
-            "Favourites" : [
-                "categoryImageName" : "favourites",
-                "imageNames" : [String](),
-            ]
-        ]
+//            "Recipes" : [
+//                "categoryImageName" : "recipes",
+//                "imageNames" : [String](),
+//            ],
+//            "Food" : [
+//                "categoryImageName" : "foods",
+//                "imageNames" : [String](),
+//            ],
+//            "Videos" : [
+//                "categoryImageName" : "videos",
+//                "imageNames" : [String](),
+//            ],
+//            "Favourites" : [
+//                "categoryImageName" : "favourites",
+//                "imageNames" : [String](),
+//            ]
+        :]
     }
     
     private class func generateImage(categoryPrefix: String, numberOfImages: Int) -> [String] {
@@ -116,22 +116,22 @@ class PhotosLibrary
             // posts are sorted
             
             let photosData = [
-                "Recipes" : [
-                    "categoryImageName" : "recipes",
-                    "imageNames" : PhotosLibrary.getImageUrls(category: recipes),
-                ],
+//                "Recipes" : [
+//                    "categoryImageName" : "recipes",
+//                    "imageNames" : PhotosLibrary.getImageUrls(category: recipes),
+//                ],
                 "Food" : [
                     "categoryImageName" : "foods",
                     "imageNames" : PhotosLibrary.getImageUrls(category: food),
                 ],
-                "Videos" : [
-                    "categoryImageName" : "videos",
-                    "imageNames" : PhotosLibrary.getImageUrls(category: videos),
-                ],
-                "Favourites" : [
-                    "categoryImageName" : "favourites",
-                    "imageNames" : PhotosLibrary.getImageUrls(category: favourites),
-                ]
+//                "Videos" : [
+//                    "categoryImageName" : "videos",
+//                    "imageNames" : PhotosLibrary.getImageUrls(category: videos),
+//                ],
+//                "Favourites" : [
+//                    "categoryImageName" : "favourites",
+//                    "imageNames" : PhotosLibrary.getImageUrls(category: favourites),
+//                ]
             ]
             
             var categories = [PhotoCategory]()

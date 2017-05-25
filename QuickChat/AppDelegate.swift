@@ -65,8 +65,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         UINavigationBar.appearance().setBackgroundImage(UIImage(named: "navigation")!.resizableImage(withCapInsets: UIEdgeInsetsMake(0, 0, 0, 0), resizingMode: .stretch), for: .default)
         UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().shadowImage = UIImage()
+       // UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        
+        UITabBar.appearance().tintColor = UIColor(red:0.88, green:0.38, blue:0.47, alpha:1.0)
+        UITabBar.appearance().barTintColor = UIColor.white
+        //UITabBar.appearance().backgroundColor = UIColor.clear
+        
         return true
     }
     

@@ -27,15 +27,29 @@ class FollowUsersTableViewController: UITableViewController,UISearchResultsUpdat
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print(self.loggedInUser)
+        //print(self.loggedInUser)
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         
-
-        databaseRef.child("users").queryOrdered(byChild: "full name").observe(.childAdded, with: { (snapshot) in
-
+        databaseRef.child("users").queryOrderedByKey().observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let properties = snapshot.value as! [String : AnyObject]
+            
+            
+            for (_,value) in properties{
+                
+                //print(value["listid"])
+                
+                let listid = value["listid"] as! String
+                
+            
+        self.databaseRef.child("users").child(listid).child("credentials").queryOrdered(byChild: "name").observe(.childAdded, with: { (snapshot) in
+            
+            
+//            databaseRef.child("users").child(self.loggedInUser!.uid).child("credentials").child(self.otherUser?["name"] as! String).observe(.value, with: { (snapshot) in
+            //print(snapshot)
             
             let key = snapshot.key
             let snapshot = snapshot.value as? NSDictionary
@@ -55,9 +69,11 @@ class FollowUsersTableViewController: UITableViewController,UISearchResultsUpdat
            
             }) { (error) in
             print(error.localizedDescription)
-        }
-
+           }
+            }
+        })
     }
+        
     
     func showContacts() {
         let info = ["viewType" : ShowExtraView.contacts]
@@ -100,7 +116,7 @@ class FollowUsersTableViewController: UITableViewController,UISearchResultsUpdat
             user = self.usersArray[indexPath.row]
         }
         
-        cell.textLabel?.text = user?["full name"] as? String
+        cell.textLabel?.text = user?["name"] as? String
        // cell.detailTextLabel?.text = user?["handle"] as? String
         
 
@@ -164,10 +180,10 @@ class FollowUsersTableViewController: UITableViewController,UISearchResultsUpdat
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func dismissFollowUsersTableView(_ sender: AnyObject) {
-        
-        dismiss(animated: true, completion: nil)
-    }
+//    @IBAction func dismissFollowUsersTableView(_ sender: AnyObject) {
+//        
+//        dismiss(animated: true, completion: nil)
+//    }
 
     func updateSearchResults(for searchController: UISearchController) {
         
@@ -179,7 +195,7 @@ class FollowUsersTableViewController: UITableViewController,UISearchResultsUpdat
     {
         self.filteredUsers = self.usersArray.filter{ user in
 
-            let username = user!["full name"] as? String
+            let username = user!["name"] as? String
             
         return(username?.lowercased().contains(searchText.lowercased()))!
       
