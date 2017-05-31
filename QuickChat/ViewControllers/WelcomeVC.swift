@@ -103,7 +103,7 @@ class WelcomeVC: UIViewController, UITextFieldDelegate, UINavigationControllerDe
     }
     
     func pushTomainView() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "feedvc") as! UITabBarController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "feedvc") as! NavVC
         self.show(vc, sender: nil)
     }
     
