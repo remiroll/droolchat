@@ -116,7 +116,7 @@ class UserProfileViewController: UIViewController {
         self.displayNameText.text = self.otherUser?["full name"] as? String
         // Do any additional setup after loading the view.
         
-        self.profileImageView.downloadImage(from: self.otherUser?["urlToImage"] as! String) as? UIImage
+        //self.profileImageView.downloadImage(from: self.otherUser?["urlToImage"] as! String) as? UIImage
         
     }
     

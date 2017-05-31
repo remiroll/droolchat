@@ -15,7 +15,7 @@ class HeaderView: UICollectionReusableView {
     var category: PhotoCategory! {
         didSet {
             categoryLabel.text = category.title
-            categoryImageView.image = UIImage(named: category.categoryImageName)
+            //categoryImageView.image = UIImage(named: category.categoryImageName)
         }
     }
     

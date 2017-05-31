@@ -54,9 +54,9 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableview.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! UserCell
+        let cell = tableview.dequeueReusableCell(withIdentifier: "theuserCell", for: indexPath) as! UserCell
         
-        cell.nameLabel.text = self.user[indexPath.row].name
+        //cell.nameLabel.text = self.user[indexPath.row].name
         cell.userID = self.user[indexPath.row].id
         //cell.userImage.downloadImage(from: self.user[indexPath.row].profilePic)
         checkFollowing(indexPath: indexPath)
@@ -133,6 +133,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
 extension UIImageView {
     
     func downloadImage(from imgURL: String!) {
+        guard imgURL != nil else { return }
         let url = URLRequest(url: URL(string: imgURL)!)
         
         let task = URLSession.shared.dataTask(with: url) {

@@ -48,7 +48,7 @@ class UserCell: UITableViewCell {
                 let following = ["following/\(key)" : self.userID]
                 let followers = ["followers/\(key)" : uid]
                 
-                ref.child("users").child(uid).updateChildValues(following)
+                //ref.child("users").child(uid).updateChildValues(following)
                 ref.child("users").child(self.userID).updateChildValues(followers)
                 
                 //self.tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark

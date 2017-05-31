@@ -24,6 +24,7 @@
 import UIKit
 import Firebase
 import MapKit
+import GlidingCollection
 
 class NavVC: UINavigationController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
 

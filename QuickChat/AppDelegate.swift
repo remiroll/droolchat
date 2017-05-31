@@ -22,6 +22,7 @@
 
 
 import UIKit
+import GlidingCollection
 import Firebase
 
 @UIApplicationMain
@@ -59,21 +60,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+ 
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        setupGlidingCollection()
         
         
         FIRApp.configure()
-        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "navigation")!.resizableImage(withCapInsets: UIEdgeInsetsMake(0, 0, 0, 0), resizingMode: .stretch), for: .default)
-        UINavigationBar.appearance().isTranslucent = false
-       // UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        
+        
+//        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "navigation")!.resizableImage(withCapInsets: UIEdgeInsetsMake(0, 0, 0, 0), resizingMode: .stretch), for: .default)
+//        UINavigationBar.appearance().isTranslucent = false
+//        UINavigationBar.appearance().shadowImage = UIImage()
+//        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        
+        let transparentPixel = UIImage(named: "TransparentPixel")
+        UINavigationBar.appearance().setBackgroundImage(transparentPixel, for: UIBarMetrics.default)
+        UINavigationBar.appearance().shadowImage = transparentPixel
+        UINavigationBar.appearance().backgroundColor = UIColor.clear
+        UINavigationBar.appearance().isTranslucent = true
+      
         
         UITabBar.appearance().tintColor = UIColor(red:0.88, green:0.38, blue:0.47, alpha:1.0)
         UITabBar.appearance().barTintColor = UIColor.white
-        //UITabBar.appearance().backgroundColor = UIColor.clear
+        UITabBar.appearance().backgroundColor = UIColor.clear
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().backgroundImage = UIImage()
         
         return true
     }
+    
+    func setupGlidingCollection() {
+        var config = GlidingConfig.shared
+        config.buttonsFont = UIFont.boldSystemFont(ofSize: 22)
+        config.inactiveButtonsColor = config.activeButtonColor
+        GlidingConfig.shared = config
+    }
+
     
 
     

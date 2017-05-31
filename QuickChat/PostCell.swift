@@ -8,14 +8,13 @@
 
 import UIKit
 import Firebase
-import IBAnimatable
+
 
 class PostCell: UICollectionViewCell {
     
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var likeLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     
@@ -25,6 +24,20 @@ class PostCell: UICollectionViewCell {
     
     var postID: String!
     var postsUserID: String!
+    
+    override func awakeFromNib() {
+        postImage.layer.cornerRadius = 5
+        postImage.clipsToBounds = true
+//                postImage.layer.shadowColor = UIColor.gray.cgColor
+//                postImage.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+//                postImage.layer.shadowRadius = 2.0
+//                postImage.layer.shadowOpacity = 3.0
+//                postImage.layer.masksToBounds = false
+        
+        
+    }
+    
+    
     
     
     @IBAction func likePressed(_ sender: Any) {
@@ -141,47 +154,47 @@ class PostCell: UICollectionViewCell {
         })
     }
     
-    func getPostsUserID(){
-        
-        let ref = FIRDatabase.database().reference()
-        
-            //let key = ref.child("users").child("barcode").key
-            
-            ref.child("posts").observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                if let itemsSnap = snapshot.value as? [String : AnyObject] {
-                    
-                    for (_,value) in itemsSnap {
-                        
-                        if let pUserID = value["userID"] as? String, let postIDs = value["postID"] as? String{
-                            if postIDs == self.postID{
-                                userPageID = pUserID
-                                //print(userPageID)
-                            }
-                        }
-                    }
-                }
-                
-            })
-            ref.removeAllObservers()
-        
-        
-        
-    }
+//    func getPostsUserID(){
+//        
+//        let ref = FIRDatabase.database().reference()
+//        
+//            //let key = ref.child("users").child("barcode").key
+//            
+//            ref.child("posts").observeSingleEvent(of: .value, with: { (snapshot) in
+//                
+//                if let itemsSnap = snapshot.value as? [String : AnyObject] {
+//                    
+//                    for (_,value) in itemsSnap {
+//                        
+//                        if let pUserID = value["userID"] as? String, let postIDs = value["postID"] as? String{
+//                            if postIDs == self.postID{
+//                                userPageID = pUserID
+//                                //print(userPageID)
+//                            }
+//                        }
+//                    }
+//                }
+//                
+//            })
+//            ref.removeAllObservers()
+//        
+//        
+//        
+//    }
     
   
-    @IBAction func profilePicPressed(_ sender: Any) {
-        print("done")
-        getPostsUserID()
-        
-        
-        
-    }
-    
-    @IBAction func usernamePressed(_ sender: Any) {
-        print("done")
-        getPostsUserID()
-        
-    }
+//    @IBAction func profilePicPressed(_ sender: Any) {
+//        print("done")
+//        getPostsUserID()
+//        
+//        
+//        
+//    }
+//    
+//    @IBAction func usernamePressed(_ sender: Any) {
+//        print("done")
+//        getPostsUserID()
+//        
+//    }
 }
 

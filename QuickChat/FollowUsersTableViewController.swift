@@ -27,52 +27,46 @@ class FollowUsersTableViewController: UITableViewController,UISearchResultsUpdat
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         //print(self.loggedInUser)
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         
-        databaseRef.child("users").queryOrderedByKey().observeSingleEvent(of: .value, with: { (snapshot) in
+        
             
-            let properties = snapshot.value as! [String : AnyObject]
+      
             
-            
-            for (_,value) in properties{
-                
-                //print(value["listid"])
-                
-                let listid = value["listid"] as! String
-                
-            
-        self.databaseRef.child("users").child(listid).child("credentials").queryOrdered(byChild: "name").observe(.childAdded, with: { (snapshot) in
-            
-            
-//            databaseRef.child("users").child(self.loggedInUser!.uid).child("credentials").child(self.otherUser?["name"] as! String).observe(.value, with: { (snapshot) in
-            //print(snapshot)
-            
-            let key = snapshot.key
-            let snapshot = snapshot.value as? NSDictionary
-            snapshot?.setValue(key, forKey: "uid")
-
-            if(key == self.loggedInUser?.uid)
-            {
-                print("Same as logged in user, so don't show!")
-            }
-            else
-            {
-                self.usersArray.append(snapshot)
-                //insert the rows
-                self.followUsersTableView.insertRows(at: [IndexPath(row:self.usersArray.count-1,section:0)], with: UITableViewRowAnimation.automatic)
-            }
-
-           
-            }) { (error) in
-            print(error.localizedDescription)
-           }
-            }
-        })
+       
+        
+    databaseRef.child("users").queryOrdered(byChild: "name").observe(.childAdded, with: { (snapshot) in
+        
+        
+        let key = snapshot.key
+        let snapshot = snapshot.value as? NSDictionary
+        snapshot?.setValue(key, forKey: "uid")
+        
+        if(key == self.loggedInUser?.uid)
+        {
+            print("Same as logged in user, so don't show!")
+        }
+        else
+        {
+            self.usersArray.append(snapshot)
+            //insert the rows
+            self.followUsersTableView.insertRows(at: [IndexPath(row:self.usersArray.count-1,section:0)], with: UITableViewRowAnimation.automatic)
+        }
+        
+        
+    }) { (error) in
+        print(error.localizedDescription)
     }
+    
+        }
+    
+    
+
         
     
     func showContacts() {

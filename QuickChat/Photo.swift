@@ -84,7 +84,7 @@ class PhotosLibrary
     
     class func fetchPosts(completion: @escaping ([PhotoCategory]) -> ()){
         
-        let uid = FIRAuth.auth()!.currentUser!.uid
+        //let uid = FIRAuth.auth()!.currentUser!.uid
         let ref = FIRDatabase.database().reference()
         
         ref.child("posts").queryOrderedByKey().observeSingleEvent(of: .value, with: { snap in

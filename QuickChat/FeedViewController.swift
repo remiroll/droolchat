@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-import IBAnimatable
+
 
 class FeedViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -28,6 +28,8 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         ref = FIRDatabase.database().reference()
         
         observePosts()
+        
+  
 
         
     }
@@ -38,11 +40,14 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         databaseHandle = ref?.child("users").observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String : AnyObject] {
-                let userToShow = User()
                 
-                userToShow.fullName = dictionary["full name"] as! String
-                userToShow.imgPath = dictionary["urlToImage"] as! String
-                userToShow.userID = dictionary["uid"] as! String
+                let name = dictionary["name"] as! String
+                let imgPath = dictionary["profilePicLink"] as! String
+                let userID = dictionary["uid"] as! String
+                
+                let profilePic = #imageLiteral(resourceName: "ProfileI")
+                
+                let userToShow = User(name: name, id: userID, profilePic: profilePic)
                 
                 
                 self.user.append(userToShow)
@@ -57,19 +62,37 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
             
         })
     }
+     func downloadAllUsers(exceptID: String, completion: @escaping (User) -> Swift.Void) {
+        
+        databaseHandle = ref?.child("users").observe(.childAdded, with: { (snapshot) in
+            let id = snapshot.key
+            if let data = snapshot.value as? [String: String] {
+                let name = data["name"]!
+                let email = data["email"]!
+                let link = URL.init(string: data["profilePicLink"]!)
+                URLSession.shared.dataTask(with: link!, completionHandler: { (data, response, error) in
+                    if error == nil {
+                        let profilePic = UIImage.init(data: data!)
+                        let user = User.init(name: name, email: email, id: id, profilePic: profilePic!)
+                        completion(user)
+                    }
+                }).resume()
+            }
+        })
+    }
     
     
     func observePosts() {
+        
         observeUsers()
         observePostsChildRemoved()
         
         databaseHandle = ref?.child("posts").observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String : AnyObject] {
-                let post = Post()
+                let post = Post(snapshot: snapshot)
                 
-                post.title = dictionary["title"] as! String
-                post.timestamp = dictionary["timestamp"] as! NSNumber
-                post.desc = dictionary["description"] as! String
+               
+                // post.timestamp = dictionary["timestamp"] as! NSNumber
                 post.likes = dictionary["likes"] as! Int
                 post.pathToImage = dictionary["pathToImage"] as! String
                 post.postID = dictionary["postID"] as! String
@@ -125,10 +148,10 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var timer: Timer?
     
     func handleReloadTable() {
-        self.posts.sort(by: { (post1, post2) -> Bool in
-            
-            return post1.timestamp.intValue > post2.timestamp.intValue
-        })
+//        self.posts.sort(by: { (post1, post2) -> Bool in
+//            
+//            return post1.timestamp.intValue > post2.timestamp.intValue
+//        })
         
         DispatchQueue.main.async(execute: {
             self.FeedCollectionView.reloadData()
@@ -152,9 +175,10 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCell
         
         //Sets Authors display name to post
+        print(user.count)
         for x in 0...user.count-1 {
-            if posts[indexPath.row].userID == user[x].userID {
-                cell.authorLabel.text = self.user[x].fullName
+            if posts[indexPath.row].userID == user[x].id {
+                cell.authorLabel.text = self.user[x].name
                 
             }
         }
@@ -169,27 +193,27 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.postID = self.posts[indexPath.row].postID
         
         //Displays post's title
-        cell.titleLabel.text = self.posts[indexPath.row].title
+        //cell.titleLabel.text = self.posts[indexPath.row].title
         
         //Displays post's date
-        let timeStampDate = NSDate(timeIntervalSince1970: self.posts[indexPath.row].timestamp.doubleValue)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "hh:mm a"
-        cell.dateLabel.text = dateFormatter.string(from: timeStampDate as Date)
+//        let timeStampDate = NSDate(timeIntervalSince1970: self.posts[indexPath.row].timestamp.doubleValue)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "hh:mm a"
+//        cell.dateLabel.text = dateFormatter.string(from: timeStampDate as Date)
         
         //Shows either like or unlike button depending on if user has liked the post
-        for person in self.posts[indexPath.row].peopleWhoLike {
-            if person == FIRAuth.auth()!.currentUser!.uid {
-                cell.likeBtn.isHidden = true
-                cell.unlikeBtn.isHidden = false
-                break
-            }
-        }
+//        for person in self.posts[indexPath.row].peopleWhoLike {
+//            if person == FIRAuth.auth()!.currentUser!.uid {
+//                cell.likeBtn.isHidden = true
+//                cell.unlikeBtn.isHidden = false
+//                break
+//            }
+//        }
         
         //Sets posts user profile image
         for i in 0...user.count-1 {
             
-            if posts[indexPath.row].userID == user[i].userID {
+            if posts[indexPath.row].userID == user[i].id {
                 
                 cell.imageView.downloadImage(from: user[i].imgPath)
             }
@@ -198,15 +222,15 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         //Checks if user has liked the post
         cell.checkIfLiked()
 
-        cell.contentView.layer.backgroundColor = UIColor.white.cgColor
+        cell.contentView.layer.backgroundColor = UIColor.clear.cgColor
        
-        cell.layer.shadowColor = UIColor.gray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        cell.layer.shadowRadius = 2.0
-        cell.layer.shadowOpacity = 1.0
-        cell.layer.masksToBounds = false
-        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
-        
+//        cell.layer.shadowColor = UIColor.gray.cgColor
+//        cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+//        cell.layer.shadowRadius = 2.0
+//        cell.layer.shadowOpacity = 3.0
+//        cell.layer.masksToBounds = false
+//        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
+//        
 
         
         return cell
@@ -224,19 +248,19 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
 
     
-    @IBAction func mePressed(_ sender: Any) {
-        let Puid = FIRAuth.auth()?.currentUser?.uid
-        
-        userPageID = Puid
-        performSegue(withIdentifier: "userPage", sender: self)
-    }
-    
-    @IBAction func ProfilePicPressed(_ sender: Any) {
-        performSegue(withIdentifier: "userPage", sender: self)
-    }
-    @IBAction func usernamePressed(_ sender: Any) {
-        performSegue(withIdentifier: "userPage", sender: self)
-    }
+//    @IBAction func mePressed(_ sender: Any) {
+//        let Puid = FIRAuth.auth()?.currentUser?.uid
+//        
+//        userPageID = Puid
+//        performSegue(withIdentifier: "userPage", sender: self)
+//    }
+//    
+//    @IBAction func ProfilePicPressed(_ sender: Any) {
+//        performSegue(withIdentifier: "userPage", sender: self)
+//    }
+//    @IBAction func usernamePressed(_ sender: Any) {
+//        performSegue(withIdentifier: "userPage", sender: self)
+//    }
    
 
 }

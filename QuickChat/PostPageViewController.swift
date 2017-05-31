@@ -17,17 +17,20 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var userLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var descriptionLbl: UILabel!
-    @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var likeBtn: UIButton!
     @IBOutlet weak var likeLbl: UILabel!
+    @IBOutlet weak var postImageView: UIImageView!
+    
+    
+    
     var barBtn: UIBarButtonItem!
     
     var postID : String!
     let ref = FIRDatabase.database().reference()
     var posts = [Post]()
     var user = [User]()
-    var postRecipe = [RecipeItem]()
+    
     var liked: Bool!
     
     let uid = FIRAuth.auth()!.currentUser!.uid
@@ -35,15 +38,15 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.tableFooterView = UIView()
+//        self.tableView.tableFooterView = UIView()
         
-        barBtn = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.plain, target: self, action: #selector(UserPageViewController.buttonMethod))
+        //barBtn = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.plain, target: self, action: #selector(UserPageViewController.buttonMethod))
+        fetchSinglePost(postID: selectedPostID)
+//        retrieveUser()
 
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        retrieveUser()
         
         
         
@@ -175,15 +178,7 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
         ref.child("posts").child(posts[0].postID).updateChildValues(feed)
         
         
-        
-        for i in 0...postRecipe.count-1{
-            let key1 = ref.child("posts").childByAutoId().key
-            let recipe = ["itemName" : postRecipe[i].itemName, "amount" : postRecipe[i].amount, "fraction" : postRecipe[i].fraction, "RID" : key1] as [String : Any]
-            
-            let recipeFeed = ["\(key1)" : recipe]
-            
-            ref.child("posts").child(posts[0].postID).child("recipe").setValue(recipeFeed)
-        }
+
         
         
         
@@ -191,79 +186,102 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
-    func fetchPost(){
+    func fetchSinglePost(postID: String) {
+        ref.child("posts/\(postID)").observeSingleEvent(of: .value, with: { (snap) in
+            let post = Post(snapshot: snap)
+            
+            self.postImageView.image(fromUrl: post.pathToImage)
+            
         
-        ref.child("posts").queryOrderedByKey().observeSingleEvent(of: .value, with: { (snap) in
-            
-            let postsSnap = snap.value as! [String : AnyObject]
-            self.posts.removeAll()
-            
-            for (_,post) in postsSnap {
-                if let postsID = post["postID"] as? String {
-                    
-                  
-                    if selectedPostID == postsID {
-                        
-                        let posst = Post()
-                        if let likes = post["likes"] as? Int, let title = post["title"] as? String, let description = post["description"] as? String, let timestamp = post["timestamp"] as? NSNumber, let pathToImage = post["pathToImage"] as? String, let postID = post["postID"] as? String, let userID = post["userID"] as? String {
-                            
-                            posst.likes = likes
-                            posst.title = title
-                            posst.desc = description
-                            posst.timestamp = timestamp
-                            posst.pathToImage = pathToImage
-                            posst.postID = postID
-                            posst.userID = userID
-                            
-                            if let people = post["peopleWhoLike"] as? [String : AnyObject] {
-                                for (_,person) in people {
-                                    posst.peopleWhoLike.append(person as! String)
-                                }
-                            }
-                            print(posst)
-                            self.posts.append(posst)
-                        }
-                        
-                        self.ref.child("posts").child(postsID).child("recipe").queryOrderedByKey().observeSingleEvent(of: .value, with: { (snap) in
-                            let recipeSnap = snap.value as! [String : AnyObject]
-                            self.postRecipe.removeAll()
-                            
-                             for (_,recipe1) in recipeSnap {
-                                let rec = RecipeItem()
-                                
-                                if let itemName = recipe1["itemName"] as? String, let amount = recipe1["amount"] as? String, let fraction = recipe1["fraction"] as? String {
-                                    
-                                    rec.itemName = itemName
-                                    rec.amount = amount
-                                    rec.fraction = fraction
-                                    
-                                    self.postRecipe.append(rec)
-                                    
-                                }
-                               self.tableView.reloadData()
-                            }
-
-                            
-                            
-                        })
-                        
-                    }
-                    
-                    
-                    //self.collectionView.reloadData()
-                }
-            }
+            self.ref.child("users/\(post.userID!)").observeSingleEvent(of: .value, with: { (userSnapshot) in
+        
+                let snapshotValue = userSnapshot.value as! [String: AnyObject]
+                let name = snapshotValue["name"] as! String
+                self.userLbl.text = name
+                
+            })
         })
-        
-        ref.removeAllObservers()
     }
+    
+//    func fetchPost(){
+//        
+//        ref.child("posts").queryOrderedByKey().observeSingleEvent(of: .value, with: { (snap) in
+//            
+//            let postsSnap = snap.value as! [String : AnyObject]
+//            self.posts.removeAll()
+//            
+//            for (_,post) in postsSnap {
+//                if let postsID = post["postID"] as? String {
+//                    
+//                  
+//                    if selectedPostID == postsID {
+//                        
+//                        let post = Post()
+//                        
+//                        
+////                        if let likes = post["likes"] as? Int, let title = post["title"] as? String, let description = post["description"] as? String, let timestamp = post["timestamp"] as? NSNumber, let pathToImage = post["pathToImage"] as? String, let postID = post["postID"] as? String, let userID = post["userID"] as? String {
+////                            
+////                            posst.likes = likes
+////                            posst.title = title
+////                            //posst.desc = description
+////                            posst.timestamp = timestamp
+////                            posst.pathToImage = pathToImage
+////                            posst.postID = postID
+////                            posst.userID = userID
+////                            
+////                            if let people = post["peopleWhoLike"] as? [String : AnyObject] {
+////                                for (_,person) in people {
+////                                    posst.peopleWhoLike.append(person as! String)
+////                                }
+////                            }
+////                            print(posst)
+////                            self.posts.append(posst)
+////                        }
+//                        
+//
+//                        
+//                    }
+//                    
+//                    
+//                    //self.collectionView.reloadData()
+//                }
+//            }
+//        })
+//        
+//        ref.removeAllObservers()
+//    }
+    
+//    func fetchPosts(){
+//        
+//        let uid = FIRAuth.auth()!.currentUser!.uid
+//        let ref = FIRDatabase.database().reference()
+//        
+//        ref.child("posts").queryOrderedByKey().observeSingleEvent(of: .value, with: { snap in
+//            
+//            for snapshot in snap.children {
+//                guard let snapshot = snapshot as? FIRDataSnapshot else { continue }
+//                let post = Post(snapshot: snapshot)
+//                
+//                if uid == post.userID {
+//                    self.posts.append(post)
+//                }
+//                
+//                self.sortPosts()
+//                
+//                self.glidingView.reloadData()
+//                self.collectionView.reloadData()
+//                
+//                self.posts.removeAll()
+//            }
+//        })
+//    }
     
     
     func setData(){
         profileImageView.downloadImage(from: self.user[0].imgPath!)
         titleLbl.text = posts[0].title
         navigationItem.title = posts[0].title
-        userLbl.text = user[0].fullName
+        userLbl.text = user[0].name
         
         //Displays post's date
         let timeStampDate = NSDate(timeIntervalSince1970: self.posts[0].timestamp.doubleValue)
@@ -271,7 +289,7 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
         dateFormatter.dateFormat = "hh:mm a"
         dateLbl.text = dateFormatter.string(from: timeStampDate as Date)
         
-        descriptionLbl.text = posts[0].desc
+        //descriptionLbl.text = posts[0].desc
         postImageView.downloadImage(from: self.posts[0].pathToImage!)
         likeLbl.text = "\(posts[0].likes!) Likes"
         
@@ -287,8 +305,6 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func retrieveUser(){
-       
-        fetchPost()
         
         ref.child("users").queryOrderedByKey().observeSingleEvent(of: .value, with: { (snapshot) in
             let users = snapshot.value as! [String : AnyObject]
@@ -298,17 +314,17 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 if let uid = self.posts[0].userID {
                     
-                    let userToShow = User()
-                    if let fullName = value["full name"] as? String, let imagePath = value["urlToImage"] as? String, let userID = value["uid"] as? String {
-                        if userID == uid {
-                        
-                            userToShow.fullName = fullName
-                            userToShow.imgPath = imagePath
-                            userToShow.userID = uid
-                        
-                            self.user.append(userToShow)
-                        }
-                    }
+//                    let userToShow = User()
+//                    if let fullName = value["name"] as? String, let imagePath = value["porfilePicLink"] as? String, let userID = value["uid"] as? String {
+//                        if userID == uid {
+//                        
+//                            userToShow.fullName = fullName
+//                            userToShow.imgPath = imagePath
+//                            userToShow.userID = uid
+//                        
+//                            self.user.append(userToShow)
+//                        }
+//                    }
                     
                 }
                 
@@ -327,10 +343,8 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        print(postRecipe.count)
-        
-        return postRecipe.count
+        return 0
+    
     }
     
     
@@ -338,16 +352,7 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        let pointSize: CGFloat = 14.0
-        let string = "\(postRecipe[indexPath.row].amount!) \(postRecipe[indexPath.row].itemName!)"
-        
-        let attribString = NSMutableAttributedString(string: string, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: pointSize), NSForegroundColorAttributeName: UIColor.black])
-        attribString.addAttributes([NSFontAttributeName: UIFont.fractionFont(ofSize: pointSize)], range: (string as NSString).range(of: postRecipe[indexPath.row].fraction!))
-        cell.textLabel?.attributedText = attribString
-        cell.textLabel?.sizeToFit()
-
-        
+  
        
         
         return cell
@@ -479,41 +484,6 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
         })
     }
     
-    @IBAction func addToShoppingPressed(_ sender: Any) {
-        let uid = FIRAuth.auth()!.currentUser!.uid
-        let ref = FIRDatabase.database().reference()
-        
-        
-        if (postRecipe.count != 0){
-            for i in 0...postRecipe.count-1{
-                let key = ref.child("users").child(uid).child("itemsList").childByAutoId().key
-            
-                let newItem = ManualAddedItem()
-            
-                let newItemName = postRecipe[i].itemName
-                let completion = false
-            
-                newItem.itemName = newItemName
-                newItem.completion = completion
-                newItem.id = newItemName
-            
-                let item: [String : Any] = ["name" : newItemName!, "completion" : completion, "listID" : key]
-                let itemsList = ["\(key)" : item]
-            
-                ref.child("users").child(uid).child("manuallyAddedItems").updateChildValues(itemsList)
-                
-                let alertController = UIAlertController(title: "Done", message: "Recipe added to your shopping list", preferredStyle: .alert)
-                
-                let defaultAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-                alertController.addAction(defaultAction)
-                
-                present(alertController, animated: true, completion: nil)
-            
-           
-            
-            }
-        }
-    }
 
 
 

@@ -37,7 +37,9 @@ class LandingVC: UIViewController {
     func pushTo(viewController: ViewControllerType)  {
         switch viewController {
         case .conversations:
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "feedvc")
+            //let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "feedvc")
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "feedvc") as! UITabBarController
+          
             self.present(vc, animated: false, completion: nil)
         case .welcome:
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "Welcome") as! WelcomeVC

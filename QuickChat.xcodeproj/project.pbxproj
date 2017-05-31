@@ -22,13 +22,19 @@
 		22B974C01DE9B5DF00E09490 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B974BF1DE9B5DF00E09490 /* Conversation.swift */; };
 		22EA578F1E1D28DD0008FFB2 /* newMessage.wav in Resources */ = {isa = PBXBuildFile; fileRef = 22EA578E1E1D28DD0008FFB2 /* newMessage.wav */; };
 		22EA57911E1D32520008FFB2 /* VCCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EA57901E1D32520008FFB2 /* VCCells.swift */; };
+		3F0E5B0B1EDED82A007DEC22 /* Amatic-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F0E5B091EDED82A007DEC22 /* Amatic-Bold.ttf */; };
+		3F0E5B0C1EDED82A007DEC22 /* AmaticSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F0E5B0A1EDED82A007DEC22 /* AmaticSC-Regular.ttf */; };
+		3F43D5421EDD9010005D5EC8 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F43D5381EDD9010005D5EC8 /* Collection.swift */; };
+		3F43D5431EDD9010005D5EC8 /* GlidingCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F43D5391EDD9010005D5EC8 /* GlidingCollection.swift */; };
+		3F43D5441EDD9010005D5EC8 /* GlidingConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F43D53A1EDD9010005D5EC8 /* GlidingConfig.swift */; };
+		3F43D5451EDD9010005D5EC8 /* GlidingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F43D53B1EDD9010005D5EC8 /* GlidingLayout.swift */; };
+		3F43D5461EDD9010005D5EC8 /* GlidingCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F43D53D1EDD9010005D5EC8 /* GlidingCollectionDataSource.swift */; };
+		3F43D5471EDD9010005D5EC8 /* GlidingCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F43D53E1EDD9010005D5EC8 /* GlidingCollectionDelegate.swift */; };
+		3F43D5481EDD9010005D5EC8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F43D5411EDD9010005D5EC8 /* Info.plist */; };
+		3F43D54C1EDD9D1E005D5EC8 /* MesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F43D54B1EDD9D1E005D5EC8 /* MesVC.swift */; };
+		3F43D54E1EDDC27B005D5EC8 /* GlidingCollection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F43D54D1EDDC27B005D5EC8 /* GlidingCollection.framework */; };
 		3F499C441ED0A3DB005E87EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F499C431ED0A3DB005E87EB /* GoogleService-Info.plist */; };
-		3F6767851ED1DA5000589BA9 /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6767821ED1DA5000589BA9 /* CircularTransition.swift */; };
-		3F6767861ED1DA5000589BA9 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6767831ED1DA5000589BA9 /* ListViewController.swift */; };
-		3F6767871ED1DA5000589BA9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6767841ED1DA5000589BA9 /* SecondViewController.swift */; };
 		3F6768381ED1DABD00589BA9 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6768361ED1DABD00589BA9 /* Post.swift */; };
-		3F67683D1ED1DAD600589BA9 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F67683B1ED1DAD600589BA9 /* PostCell.swift */; };
-		3F67683E1ED1DAD600589BA9 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F67683C1ED1DAD600589BA9 /* UserCell.swift */; };
 		3F67684A1ED1DB3600589BA9 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6768441ED1DB3600589BA9 /* UploadViewController.swift */; };
 		3F67684B1ED1DB3600589BA9 /* EditProViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6768451ED1DB3600589BA9 /* EditProViewController.swift */; };
 		3F67684C1ED1DB3600589BA9 /* FollowUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6768461ED1DB3600589BA9 /* FollowUsersTableViewController.swift */; };
@@ -42,6 +48,14 @@
 		3FC5458F1ED5ACFD00E1AF3A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC5458D1ED5ACFD00E1AF3A /* DetailViewController.swift */; };
 		3FC545911ED5AD0700E1AF3A /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC545901ED5AD0700E1AF3A /* Photo.swift */; };
 		3FC5459D1ED5D77D00E1AF3A /* PhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC5459C1ED5D77D00E1AF3A /* PhotosCollectionViewController.swift */; };
+		3FE0BBD91ED98E86008B427A /* Lucida Sans Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FE0BBD81ED98E86008B427A /* Lucida Sans Regular.ttf */; };
+		3FE0BBE61ED9938F008B427A /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE0BBE41ED9938F008B427A /* CollectionCell.swift */; };
+		3FE0BBE71ED9938F008B427A /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FE0BBE51ED9938F008B427A /* CollectionCell.xib */; };
+		3FE0BBE91ED993C6008B427A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE0BBE81ED993C6008B427A /* ViewController.swift */; };
+		3FE0BBFD1EDA2F3F008B427A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE0BBFC1EDA2F3F008B427A /* FeedViewController.swift */; };
+		3FE0BBFF1EDA2FB3008B427A /* PostPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE0BBFE1EDA2FB3008B427A /* PostPageViewController.swift */; };
+		3FE0BC031EDA3023008B427A /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE0BC001EDA3023008B427A /* UserCell.swift */; };
+		3FE0BC041EDA3023008B427A /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE0BC011EDA3023008B427A /* PostCell.swift */; };
 		62058F6006BD9ACBE0439C4B /* Pods_QuickChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8041C4B4A9DA4F0F53D2BDE /* Pods_QuickChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,13 +77,20 @@
 		22B974BF1DE9B5DF00E09490 /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Conversation.swift; path = QuickChat/Model/Conversation.swift; sourceTree = "<group>"; };
 		22EA578E1E1D28DD0008FFB2 /* newMessage.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = newMessage.wav; sourceTree = "<group>"; };
 		22EA57901E1D32520008FFB2 /* VCCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VCCells.swift; path = QuickChat/ViewControllers/VCCells.swift; sourceTree = "<group>"; };
+		3F0E5B091EDED82A007DEC22 /* Amatic-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Amatic-Bold.ttf"; sourceTree = "<group>"; };
+		3F0E5B0A1EDED82A007DEC22 /* AmaticSC-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AmaticSC-Regular.ttf"; sourceTree = "<group>"; };
+		3F43D5381EDD9010005D5EC8 /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		3F43D5391EDD9010005D5EC8 /* GlidingCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlidingCollection.swift; sourceTree = "<group>"; };
+		3F43D53A1EDD9010005D5EC8 /* GlidingConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlidingConfig.swift; sourceTree = "<group>"; };
+		3F43D53B1EDD9010005D5EC8 /* GlidingLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlidingLayout.swift; sourceTree = "<group>"; };
+		3F43D53D1EDD9010005D5EC8 /* GlidingCollectionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlidingCollectionDataSource.swift; sourceTree = "<group>"; };
+		3F43D53E1EDD9010005D5EC8 /* GlidingCollectionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlidingCollectionDelegate.swift; sourceTree = "<group>"; };
+		3F43D5401EDD9010005D5EC8 /* GlidingCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlidingCollection.h; sourceTree = "<group>"; };
+		3F43D5411EDD9010005D5EC8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F43D54B1EDD9D1E005D5EC8 /* MesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MesVC.swift; sourceTree = "<group>"; };
+		3F43D54D1EDDC27B005D5EC8 /* GlidingCollection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GlidingCollection.framework; sourceTree = "<group>"; };
 		3F499C431ED0A3DB005E87EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		3F6767821ED1DA5000589BA9 /* CircularTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
-		3F6767831ED1DA5000589BA9 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		3F6767841ED1DA5000589BA9 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		3F6768361ED1DABD00589BA9 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		3F67683B1ED1DAD600589BA9 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
-		3F67683C1ED1DAD600589BA9 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		3F6768361ED1DABD00589BA9 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = QuickChat/Post.swift; sourceTree = "<group>"; };
 		3F6768441ED1DB3600589BA9 /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		3F6768451ED1DB3600589BA9 /* EditProViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProViewController.swift; sourceTree = "<group>"; };
 		3F6768461ED1DB3600589BA9 /* FollowUsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowUsersTableViewController.swift; sourceTree = "<group>"; };
@@ -77,12 +98,21 @@
 		3F6768481ED1DB3600589BA9 /* ShowFollowingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowFollowingTableViewController.swift; sourceTree = "<group>"; };
 		3F6768551ED1DE4100589BA9 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		3F6768591ED1E18600589BA9 /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
-		3FC545651ED5951B00E1AF3A /* Collection+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		3FC545651ED5951B00E1AF3A /* Collection+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Collection+Extension.swift"; path = "../../Collection+Extension.swift"; sourceTree = "<group>"; };
 		3FC545881ED5ACE000E1AF3A /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		3FC545891ED5ACE000E1AF3A /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		3FC5458D1ED5ACFD00E1AF3A /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3FC545901ED5AD0700E1AF3A /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		3FC5459C1ED5D77D00E1AF3A /* PhotosCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewController.swift; sourceTree = "<group>"; };
+		3FE0BBD81ED98E86008B427A /* Lucida Sans Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lucida Sans Regular.ttf"; sourceTree = "<group>"; };
+		3FE0BBE41ED9938F008B427A /* CollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
+		3FE0BBE51ED9938F008B427A /* CollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionCell.xib; sourceTree = "<group>"; };
+		3FE0BBE81ED993C6008B427A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3FE0BBEA1ED995E3008B427A /* GlidingCollectionDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GlidingCollectionDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		3FE0BBFC1EDA2F3F008B427A /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		3FE0BBFE1EDA2FB3008B427A /* PostPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPageViewController.swift; sourceTree = "<group>"; };
+		3FE0BC001EDA3023008B427A /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		3FE0BC011EDA3023008B427A /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		614F8B4888358059B3DC166B /* Pods-QuickChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuickChat/Pods-QuickChat.debug.xcconfig"; sourceTree = "<group>"; };
 		B8041C4B4A9DA4F0F53D2BDE /* Pods_QuickChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8FBFCFF82B6EB57B02FA375 /* Pods-QuickChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-QuickChat/Pods-QuickChat.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +125,7 @@
 			files = (
 				226EFFA11E1BBBCA00B1D185 /* MapKit.framework in Frameworks */,
 				62058F6006BD9ACBE0439C4B /* Pods_QuickChat.framework in Frameworks */,
+				3F43D54E1EDDC27B005D5EC8 /* GlidingCollection.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +135,7 @@
 		224834AF1DB539690019153C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3F6768361ED1DABD00589BA9 /* Post.swift */,
 				224834B01DB539A50019153C /* User.swift */,
 				22873DA91DC790550021690E /* Message.swift */,
 				22B974BF1DE9B5DF00E09490 /* Conversation.swift */,
@@ -121,6 +153,7 @@
 				2217853C1DCD1DAC00A69F88 /* ConversationsVC.swift */,
 				2284BC441DC3582F00E36E8A /* ChatVC.swift */,
 				22EA57901E1D32520008FFB2 /* VCCells.swift */,
+				3F43D54B1EDD9D1E005D5EC8 /* MesVC.swift */,
 			);
 			name = ViewControllers;
 			path = ..;
@@ -129,6 +162,7 @@
 		224AFAAA1D86900B004E7CCD /* Helper Files */ = {
 			isa = PBXGroup;
 			children = (
+				3FE0BBEA1ED995E3008B427A /* GlidingCollectionDemo-Bridging-Header.h */,
 				220698831E066E4900F2284B /* Helper Files.swift */,
 			);
 			name = "Helper Files";
@@ -137,7 +171,6 @@
 		22A92BA41D59EBD5005D76F7 = {
 			isa = PBXGroup;
 			children = (
-				3FC545651ED5951B00E1AF3A /* Collection+Extension.swift */,
 				22A92BAF1D59EBD6005D76F7 /* QuickChat */,
 				22A92BAE1D59EBD6005D76F7 /* Products */,
 				ADD6E8E924E29AFE4DBB9FB3 /* Pods */,
@@ -156,17 +189,16 @@
 		22A92BAF1D59EBD6005D76F7 /* QuickChat */ = {
 			isa = PBXGroup;
 			children = (
-				3F71FA201ED618A80075ABEB /* Supporting Files */,
-				3F71FA181ED615A80075ABEB /* Sidebar */,
+				3F43D5361EDD9010005D5EC8 /* GlidingCollection */,
+				3FE0BBD71ED98E59008B427A /* Fonts */,
 				3FC545871ED5ACD100E1AF3A /* Feed */,
 				3F67683F1ED1DAE300589BA9 /* MainViewControllers */,
 				3F67683A1ED1DAC900589BA9 /* Custom Cell */,
-				3F6768351ED1DAB000589BA9 /* Objects */,
-				3F6767811ED1DA5000589BA9 /* CircularTransition */,
 				224AFA9E1D868371004E7CCD /* ViewControllers */,
 				224834AF1DB539690019153C /* Model */,
 				224AFAAA1D86900B004E7CCD /* Helper Files */,
 				22A92BB71D59EBD6005D76F7 /* Assets.xcassets */,
+				3FE0BBE81ED993C6008B427A /* ViewController.swift */,
 				22A92BB01D59EBD6005D76F7 /* AppDelegate.swift */,
 				224AFA9C1D867DE7004E7CCD /* Main.storyboard */,
 				22A92BBC1D59EBD6005D76F7 /* Info.plist */,
@@ -176,29 +208,52 @@
 			path = QuickChat;
 			sourceTree = "<group>";
 		};
-		3F6767811ED1DA5000589BA9 /* CircularTransition */ = {
+		3F43D5361EDD9010005D5EC8 /* GlidingCollection */ = {
 			isa = PBXGroup;
 			children = (
-				3F6767821ED1DA5000589BA9 /* CircularTransition.swift */,
-				3F6767831ED1DA5000589BA9 /* ListViewController.swift */,
-				3F6767841ED1DA5000589BA9 /* SecondViewController.swift */,
+				3FC545651ED5951B00E1AF3A /* Collection+Extension.swift */,
+				3FE0BBE31ED9937F008B427A /* CollectionCell */,
+				3F43D5371EDD9010005D5EC8 /* Extensions */,
+				3F43D5391EDD9010005D5EC8 /* GlidingCollection.swift */,
+				3F43D53A1EDD9010005D5EC8 /* GlidingConfig.swift */,
+				3F43D53B1EDD9010005D5EC8 /* GlidingLayout.swift */,
+				3F43D53C1EDD9010005D5EC8 /* Protocols */,
+				3F43D53F1EDD9010005D5EC8 /* Resources */,
 			);
-			path = CircularTransition;
+			path = GlidingCollection;
 			sourceTree = "<group>";
 		};
-		3F6768351ED1DAB000589BA9 /* Objects */ = {
+		3F43D5371EDD9010005D5EC8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3F6768361ED1DABD00589BA9 /* Post.swift */,
+				3F43D5381EDD9010005D5EC8 /* Collection.swift */,
 			);
-			name = Objects;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3F43D53C1EDD9010005D5EC8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3F43D53D1EDD9010005D5EC8 /* GlidingCollectionDataSource.swift */,
+				3F43D53E1EDD9010005D5EC8 /* GlidingCollectionDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		3F43D53F1EDD9010005D5EC8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3F43D5401EDD9010005D5EC8 /* GlidingCollection.h */,
+				3F43D5411EDD9010005D5EC8 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		3F67683A1ED1DAC900589BA9 /* Custom Cell */ = {
 			isa = PBXGroup;
 			children = (
-				3F67683B1ED1DAD600589BA9 /* PostCell.swift */,
-				3F67683C1ED1DAD600589BA9 /* UserCell.swift */,
+				3FE0BC001EDA3023008B427A /* UserCell.swift */,
+				3FE0BC011EDA3023008B427A /* PostCell.swift */,
 			);
 			name = "Custom Cell";
 			sourceTree = "<group>";
@@ -213,22 +268,10 @@
 				3F6768471ED1DB3600589BA9 /* ShowFollowersTableViewController.swift */,
 				3F6768481ED1DB3600589BA9 /* ShowFollowingTableViewController.swift */,
 				3F6768551ED1DE4100589BA9 /* UserProfileViewController.swift */,
+				3FE0BBFC1EDA2F3F008B427A /* FeedViewController.swift */,
+				3FE0BBFE1EDA2FB3008B427A /* PostPageViewController.swift */,
 			);
 			name = MainViewControllers;
-			sourceTree = "<group>";
-		};
-		3F71FA181ED615A80075ABEB /* Sidebar */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Sidebar;
-			sourceTree = "<group>";
-		};
-		3F71FA201ED618A80075ABEB /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		3FC545871ED5ACD100E1AF3A /* Feed */ = {
@@ -243,9 +286,30 @@
 			name = Feed;
 			sourceTree = "<group>";
 		};
+		3FE0BBD71ED98E59008B427A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3F0E5B091EDED82A007DEC22 /* Amatic-Bold.ttf */,
+				3F0E5B0A1EDED82A007DEC22 /* AmaticSC-Regular.ttf */,
+				3FE0BBD81ED98E86008B427A /* Lucida Sans Regular.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		3FE0BBE31ED9937F008B427A /* CollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				3FE0BBE41ED9938F008B427A /* CollectionCell.swift */,
+				3FE0BBE51ED9938F008B427A /* CollectionCell.xib */,
+			);
+			name = CollectionCell;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		5923406597F4A9DB000B8FF9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3F43D54D1EDDC27B005D5EC8 /* GlidingCollection.framework */,
 				226EFFA01E1BBBCA00B1D185 /* MapKit.framework */,
 				B8041C4B4A9DA4F0F53D2BDE /* Pods_QuickChat.framework */,
 			);
@@ -333,10 +397,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F0E5B0B1EDED82A007DEC22 /* Amatic-Bold.ttf in Resources */,
 				22A92BB81D59EBD6005D76F7 /* Assets.xcassets in Resources */,
 				3F499C441ED0A3DB005E87EB /* GoogleService-Info.plist in Resources */,
+				3FE0BBD91ED98E86008B427A /* Lucida Sans Regular.ttf in Resources */,
+				3FE0BBE71ED9938F008B427A /* CollectionCell.xib in Resources */,
+				3F0E5B0C1EDED82A007DEC22 /* AmaticSC-Regular.ttf in Resources */,
 				22EA578F1E1D28DD0008FFB2 /* newMessage.wav in Resources */,
 				224AFA9D1D867DE7004E7CCD /* Main.storyboard in Resources */,
+				3F43D5481EDD9010005D5EC8 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,35 +464,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F43D5441EDD9010005D5EC8 /* GlidingConfig.swift in Sources */,
 				3FC5458F1ED5ACFD00E1AF3A /* DetailViewController.swift in Sources */,
 				2284BC451DC3582F00E36E8A /* ChatVC.swift in Sources */,
 				2274709E1DCCF9BF00645401 /* LandingVC.swift in Sources */,
+				3FE0BBE91ED993C6008B427A /* ViewController.swift in Sources */,
 				3F67684B1ED1DB3600589BA9 /* EditProViewController.swift in Sources */,
 				3FC5458B1ED5ACE000E1AF3A /* HeaderView.swift in Sources */,
 				3F67684A1ED1DB3600589BA9 /* UploadViewController.swift in Sources */,
+				3F43D5431EDD9010005D5EC8 /* GlidingCollection.swift in Sources */,
+				3F43D5451EDD9010005D5EC8 /* GlidingLayout.swift in Sources */,
+				3FE0BC031EDA3023008B427A /* UserCell.swift in Sources */,
 				3F67684C1ED1DB3600589BA9 /* FollowUsersTableViewController.swift in Sources */,
+				3F43D5471EDD9010005D5EC8 /* GlidingCollectionDelegate.swift in Sources */,
 				22A5FC5F1DEB185B00624E2B /* NavVC.swift in Sources */,
 				22B974C01DE9B5DF00E09490 /* Conversation.swift in Sources */,
-				3F6767871ED1DA5000589BA9 /* SecondViewController.swift in Sources */,
+				3FE0BBE61ED9938F008B427A /* CollectionCell.swift in Sources */,
+				3F43D5461EDD9010005D5EC8 /* GlidingCollectionDataSource.swift in Sources */,
 				3FC545661ED5951B00E1AF3A /* Collection+Extension.swift in Sources */,
 				3F67684E1ED1DB3600589BA9 /* ShowFollowingTableViewController.swift in Sources */,
 				2217853D1DCD1DAC00A69F88 /* ConversationsVC.swift in Sources */,
-				3F67683E1ED1DAD600589BA9 /* UserCell.swift in Sources */,
+				3FE0BC041EDA3023008B427A /* PostCell.swift in Sources */,
 				3F67684D1ED1DB3600589BA9 /* ShowFollowersTableViewController.swift in Sources */,
 				22A92BB11D59EBD6005D76F7 /* AppDelegate.swift in Sources */,
 				3FC545911ED5AD0700E1AF3A /* Photo.swift in Sources */,
 				224AFAA91D86890A004E7CCD /* WelcomeVC.swift in Sources */,
 				3F6768381ED1DABD00589BA9 /* Post.swift in Sources */,
-				3F6767851ED1DA5000589BA9 /* CircularTransition.swift in Sources */,
 				220698841E066E4900F2284B /* Helper Files.swift in Sources */,
 				22873DAA1DC790550021690E /* Message.swift in Sources */,
+				3F43D54C1EDD9D1E005D5EC8 /* MesVC.swift in Sources */,
+				3F43D5421EDD9010005D5EC8 /* Collection.swift in Sources */,
 				3F67685A1ED1E18600589BA9 /* UsersViewController.swift in Sources */,
 				3FC5458A1ED5ACE000E1AF3A /* PhotoCell.swift in Sources */,
 				3FC5459D1ED5D77D00E1AF3A /* PhotosCollectionViewController.swift in Sources */,
 				22EA57911E1D32520008FFB2 /* VCCells.swift in Sources */,
-				3F6767861ED1DA5000589BA9 /* ListViewController.swift in Sources */,
-				3F67683D1ED1DAD600589BA9 /* PostCell.swift in Sources */,
+				3FE0BBFF1EDA2FB3008B427A /* PostPageViewController.swift in Sources */,
 				3F6768561ED1DE4100589BA9 /* UserProfileViewController.swift in Sources */,
+				3FE0BBFD1EDA2F3F008B427A /* FeedViewController.swift in Sources */,
 				224834B11DB539A50019153C /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,7 +548,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -514,7 +591,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -529,6 +606,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = PB5S47GH58;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = QuickChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -545,6 +626,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = PB5S47GH58;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = QuickChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -11,11 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="03b-as-7h4" customClass="CollectionCell" customModule="GlidingCollectionDemo" customModuleProvider="target">
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="03b-as-7h4" customClass="CollectionCell" customModule="QuickChat" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="400"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                <rect key="frame" x="0.0" y="0.0" width="250" height="400"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="99" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DpZ-0l-nTe">
@@ -24,14 +24,14 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="DpZ-0l-nTe" firstAttribute="leading" secondItem="03b-as-7h4" secondAttribute="leading" id="NYg-9n-ANA"/>
-                <constraint firstItem="DpZ-0l-nTe" firstAttribute="top" secondItem="03b-as-7h4" secondAttribute="top" id="SXd-zM-gSv"/>
-                <constraint firstAttribute="bottom" secondItem="DpZ-0l-nTe" secondAttribute="bottom" id="fje-5T-9zD"/>
-                <constraint firstAttribute="trailing" secondItem="DpZ-0l-nTe" secondAttribute="trailing" id="wxF-uX-yGa"/>
+                <constraint firstAttribute="trailing" secondItem="DpZ-0l-nTe" secondAttribute="trailing" id="1Hg-bu-fx3"/>
+                <constraint firstItem="DpZ-0l-nTe" firstAttribute="top" secondItem="03b-as-7h4" secondAttribute="top" id="RwN-wD-1R3"/>
+                <constraint firstItem="DpZ-0l-nTe" firstAttribute="leading" secondItem="03b-as-7h4" secondAttribute="leading" id="Zu1-zE-t7T"/>
+                <constraint firstAttribute="bottom" secondItem="DpZ-0l-nTe" secondAttribute="bottom" id="bh3-IU-fCJ"/>
             </constraints>
             <size key="customSize" width="160" height="201"/>
             <connections>
-                <outlet property="imageView" destination="DpZ-0l-nTe" id="30e-7A-Tsv"/>
+                <outlet property="imageView" destination="DpZ-0l-nTe" id="hei-OF-9QC"/>
             </connections>
             <point key="canvasLocation" x="32" y="104"/>
         </collectionViewCell>

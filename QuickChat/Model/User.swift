@@ -29,9 +29,11 @@ class User: NSObject {
     
     //MARK: Properties
     let name: String
-    let email: String
+    let email: String?
     let id: String
     var profilePic: UIImage
+    var userID: String!
+    var imgPath: String!
     
     //MARK: Methods
     class func registerUser(withName: String, email: String, password: String, profilePic: UIImage, completion: @escaping (Bool) -> Swift.Void) {
@@ -43,11 +45,11 @@ class User: NSObject {
                 storageRef.put(imageData!, metadata: nil, completion: { (metadata, err) in
                     if err == nil {
                         let path = metadata?.downloadURL()?.absoluteString
-                        let values = ["name": withName, "email": email, "profilePicLink": path!]
+                        let values = ["name": withName, "email": email, "profilePicLink": path, "uid" : user?.uid ]
                         
                         
                         
-                        FIRDatabase.database().reference().child("users").child((user?.uid)!).child("credentials").updateChildValues(values, withCompletionBlock: { (errr, _) in
+                        FIRDatabase.database().reference().child("users").child((user?.uid)!).updateChildValues(values, withCompletionBlock: { (errr, _) in
                             if errr == nil {
                                 let userInfo = ["email" : email, "password" : password]
                                 UserDefaults.standard.set(userInfo, forKey: "userInformation")
@@ -88,7 +90,7 @@ class User: NSObject {
    class func info(forUserID: String, completion: @escaping (User) -> Swift.Void) {
     
     
-        FIRDatabase.database().reference().child("users").child(forUserID).child("credentials").observeSingleEvent(of: .value, with: { (snapshot) in
+        FIRDatabase.database().reference().child("users").child(forUserID).observeSingleEvent(of: .value, with: { (snapshot) in
             
             
             if let data = snapshot.value as? [String: String] {
@@ -109,12 +111,10 @@ class User: NSObject {
     class func downloadAllUsers(exceptID: String, completion: @escaping (User) -> Swift.Void) {
         FIRDatabase.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
             let id = snapshot.key
-            let data = snapshot.value as! [String: Any]
-            let credentials = data["credentials"] as! [String: String]
-            if id != exceptID {
-                let name = credentials["name"]!
-                let email = credentials["email"]!
-                let link = URL.init(string: credentials["profilePicLink"]!)
+            if let data = snapshot.value as? [String: String] {
+                let name = data["name"]!
+                let email = data["email"]!
+                let link = URL.init(string: data["profilePicLink"]!)
                 URLSession.shared.dataTask(with: link!, completionHandler: { (data, response, error) in
                     if error == nil {
                         let profilePic = UIImage.init(data: data!)
@@ -141,5 +141,13 @@ class User: NSObject {
         self.id = id
         self.profilePic = profilePic
     }
+    
+    init(name: String, id: String, profilePic: UIImage) {
+        self.name = name
+        self.email = ""
+        self.id = id
+        self.profilePic = profilePic
+    }
+    
 }
 

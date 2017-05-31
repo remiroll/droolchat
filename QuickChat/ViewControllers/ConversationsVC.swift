@@ -42,7 +42,7 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     func customization()  {
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
         //NavigationBar customization
-        let navigationTitleFont = UIFont(name: "AvenirNext-Regular", size: 18)!
+        let navigationTitleFont = UIFont(name: "Amatic-Bold", size: 18)!
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: navigationTitleFont, NSForegroundColorAttributeName: UIColor.white]
         // notification setup
         NotificationCenter.default.addObserver(self, selector: #selector(self.pushToUserMesssages(notification:)), name: NSNotification.Name(rawValue: "showUserMessages"), object: nil)
@@ -187,9 +187,9 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             let date = dataformatter.string(from: messageDate)
             cell.timeLabel.text = date
             if self.items[indexPath.row].lastMessage.owner == .sender && self.items[indexPath.row].lastMessage.isRead == false {
-                cell.nameLabel.font = UIFont(name:"AvenirNext-DemiBold", size: 17.0)
-                cell.messageLabel.font = UIFont(name:"AvenirNext-DemiBold", size: 14.0)
-                cell.timeLabel.font = UIFont(name:"AvenirNext-DemiBold", size: 13.0)
+                cell.nameLabel.font = UIFont(name:"Amatic-Bold", size: 17.0)
+                cell.messageLabel.font = UIFont(name:"Amatic-Bold", size: 14.0)
+                cell.timeLabel.font = UIFont(name:"Amatic-Bold", size: 13.0)
                 cell.profilePic.layer.borderColor = GlobalVariables.blue.cgColor
                 cell.messageLabel.textColor = GlobalVariables.purple
             }

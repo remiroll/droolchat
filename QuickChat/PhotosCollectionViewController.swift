@@ -13,8 +13,6 @@ class PhotosCollectionViewController: UICollectionViewController, UIViewControll
 {
     
 
-    @IBOutlet weak var menuButton: UIButton!
-    let transition = CircularTransition()
 
     
     var photoCategories = PhotoCategory.fetchPhotos()
@@ -48,14 +46,14 @@ class PhotosCollectionViewController: UICollectionViewController, UIViewControll
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: itemWidth, height: itemWidth)
         
-        navigationController?.hidesBarsOnSwipe = true
+  
         
         self.customization()
         
         fetchPosts()
-        
-        //menuButton.layer.cornerRadius = menuButton.frame.size.width / 2
-    }
+            }
+    
+    
     
     lazy var leftButton: UIBarButtonItem = {
         let image = UIImage.init(named: "default profile")?.withRenderingMode(.alwaysOriginal)
@@ -69,23 +67,25 @@ class PhotosCollectionViewController: UICollectionViewController, UIViewControll
     func customization()  {
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
         //NavigationBar customization
-        let navigationTitleFont = UIFont(name: "TrebuchetMS-Bold", size: 18)!
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: navigationTitleFont, NSForegroundColorAttributeName: UIColor.black]
+        let navigationTitleFont = UIFont(name: "ArialRoundedMTBold", size: 17)!
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: navigationTitleFont, NSForegroundColorAttributeName: UIColor(red: 97/255, green: 97/255, blue: 97/255, alpha: 1)]
+        
         // notification setup
         NotificationCenter.default.addObserver(self, selector: #selector(self.pushToUserMesssages(notification:)), name: NSNotification.Name(rawValue: "showUserMessages"), object: nil)
         
 //        //right bar button
-//        let icon = UIImage.init(named: "compose")?.withRenderingMode(.alwaysOriginal)
-//        let rightButton = UIBarButtonItem.init(image: icon!, style: .plain, target: self, action: #selector(ConversationsVC.showContacts))
+        let icon = UIImage.init(named: "buttonfeed")?.withRenderingMode(.alwaysOriginal)
+        let rightButton = UIBarButtonItem.init(image: icon!, style: .plain, target: self, action: #selector(ViewController.viewDidLoad))
         
-//        self.navigationItem.rightBarButtonItem = rightButton
+     self.navigationItem.rightBarButtonItem = rightButton
         //left bar button image fetching
         self.navigationItem.leftBarButtonItem = self.leftButton
         
         if let id = FIRAuth.auth()?.currentUser?.uid {
             User.info(forUserID: id, completion: { [weak weakSelf = self] (user) in
                 let image = user.profilePic
-                let contentSize = CGSize.init(width: 30, height: 30)
+                let contentSize = CGSize.init(width: 35, height: 35)
                 UIGraphicsBeginImageContextWithOptions(contentSize, false, 0.0)
                 let _  = UIBezierPath.init(roundedRect: CGRect.init(origin: CGPoint.zero, size: contentSize), cornerRadius: 14).addClip()
                 image.draw(in: CGRect(origin: CGPoint.zero, size: contentSize))
