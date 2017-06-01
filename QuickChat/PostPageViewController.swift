@@ -208,8 +208,8 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
         
                 let snapshotValue = userSnapshot.value as! [String: AnyObject]
                 let credentials = snapshotValue["credentials"] as! [String:AnyObject]
-                let name = credentials["name"]
-                self.userLbl.text = name as! String
+                let name = credentials["name"] as! String
+                self.userLbl.text = name
                 
                 
                 //self.profileImageView.image(fromUrl: user.profilePicLink)
