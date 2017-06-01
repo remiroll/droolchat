@@ -13,6 +13,12 @@ import Firebase
 class FeedViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var FeedCollectionView: UICollectionView!
+
+    @IBAction func back(_ sender: Any) {
+            self.dismiss(animated: true, completion: nil)
+       
+    }
+    
     
     var posts = [Post]()
     var user = [User]()
@@ -34,34 +40,58 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
     }
     
-    func observeUsers(){
-        
-        //____
-        
-        databaseHandle = ref?.child("users").observe(.childAdded, with: { (snapshot) in
-            if let dictionary = snapshot.value as? [String : AnyObject] {
+//    func observeUsers(){
+//        
+//        //____
+//        
+//        databaseHandle = ref?.child("users").observe(.childAdded, with: { (snapshot) in
+//            if let dictionary = snapshot.value as? [String : AnyObject] {
+//                
+//                let name = dictionary["name"] as! String
+//                let imgPath = dictionary["profilePicLink"] as! String
+//                let userID = dictionary["uid"] as! String
+//                
+//                let profilePic = #imageLiteral(resourceName: "ProfileI")
+//                
+//                let userToShow = User(name: name, id: userID, profilePic: profilePic)
+//                
+//                
+//                self.user.append(userToShow)
+//                
+//                DispatchQueue.main.async(execute: {
+//                    self.FeedCollectionView.reloadData()
+//                })
+//                
+//            }
+//            
+//            
+//            
+//        })
+//    }
+    func info(forUserID: String, completion: @escaping (User) -> Swift.Void) {
+        FIRDatabase.database().reference().child("users").child(forUserID).child("credentials").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let data = snapshot.value as? [String: String] {
+                let name = data["name"]!
+                let email = data["email"]!
+               
+                let link = URL.init(string: data["profilePicLink"]!)
                 
-                let name = dictionary["name"] as! String
-                let imgPath = dictionary["profilePicLink"] as! String
-                let userID = dictionary["uid"] as! String
-                
-                let profilePic = #imageLiteral(resourceName: "ProfileI")
-                
-                let userToShow = User(name: name, id: userID, profilePic: profilePic)
-                
-                
-                self.user.append(userToShow)
-                
-                DispatchQueue.main.async(execute: {
-                    self.FeedCollectionView.reloadData()
-                })
-                
+                URLSession.shared.dataTask(with: link!, completionHandler: { (data, response, error) in
+                    if error == nil {
+                        let profilePic = UIImage.init(data: data!)
+                        let user = User.init(name: name, email: email, id: forUserID, profilePic: profilePic!)
+                        completion(user)
+                        
+                        //let userToShow = User(name: name, id: userID, profilePic: profilePic)
+                        //self.user.append()
+                    }
+                }).resume()
             }
-            
-            
-            
         })
     }
+    
+    
+    
      func downloadAllUsers(exceptID: String, completion: @escaping (User) -> Swift.Void) {
         
         databaseHandle = ref?.child("users").observe(.childAdded, with: { (snapshot) in
@@ -84,7 +114,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func observePosts() {
         
-        observeUsers()
+        //observeUsers()
         observePostsChildRemoved()
         
         databaseHandle = ref?.child("posts").observe(.childAdded, with: { (snapshot) in
@@ -97,6 +127,8 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 post.pathToImage = dictionary["pathToImage"] as! String
                 post.postID = dictionary["postID"] as! String
                 post.userID = dictionary["userID"] as! String
+                post.desc = dictionary["description"] as! String
+                post.title = dictionary["title"] as! String
                 
                 self.posts.append(post)
                 
@@ -175,13 +207,13 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCell
         
         //Sets Authors display name to post
-        print(user.count)
-        for x in 0...user.count-1 {
-            if posts[indexPath.row].userID == user[x].id {
-                cell.authorLabel.text = self.user[x].name
-                
-            }
-        }
+//        print(user.count)
+//        for x in 0...user.count-1 {
+//            if posts[indexPath.row].userID == user[x].id {
+//                cell.authorLabel.text = self.user[x].name
+//                
+//            }
+//        }
         
         //Displays post's image
         cell.postImage.downloadImage(from: self.posts[indexPath.row].pathToImage)
@@ -193,7 +225,9 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.postID = self.posts[indexPath.row].postID
         
         //Displays post's title
-        //cell.titleLabel.text = self.posts[indexPath.row].title
+        cell.titleLabel.text = self.posts[indexPath.row].title
+        
+        cell.descLabel.text = self.posts[indexPath.row].desc
         
         //Displays post's date
 //        let timeStampDate = NSDate(timeIntervalSince1970: self.posts[indexPath.row].timestamp.doubleValue)
@@ -211,14 +245,14 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //        }
         
         //Sets posts user profile image
-        for i in 0...user.count-1 {
-            
-            if posts[indexPath.row].userID == user[i].id {
-                
-                cell.imageView.downloadImage(from: user[i].imgPath)
-            }
-        }
-        
+//        for i in 0...user.count-1 {
+//            
+//            if posts[indexPath.row].userID == user[i].id {
+//                
+//                cell.imageView.downloadImage(from: user[i].imgPath)
+//            }
+//        }
+//
         //Checks if user has liked the post
         cell.checkIfLiked()
 

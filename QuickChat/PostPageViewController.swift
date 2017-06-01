@@ -207,7 +207,10 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
             self.ref.child("users/\(post.userID!)").observeSingleEvent(of: .value, with: { (userSnapshot) in
         
                 let snapshotValue = userSnapshot.value as! [String: AnyObject]
-                let name = snapshotValue["name"] as! String
+                let credentials = snapshotValue["credentials"] as! [String:AnyObject]
+                let name = credentials["name"]
+                self.userLbl.text = name as! String
+                
                 
                 //self.profileImageView.image(fromUrl: user.profilePicLink)
                 //self.profileImageView.downloadImage(from: self.user[0].imgPath!)

@@ -12,6 +12,7 @@ import FirebaseDatabase
 class Post: NSObject {
 
     var title: String!
+    var desc: String!
     var author: String!
     var catagory: String!
     var timestamp: NSNumber!
@@ -25,12 +26,14 @@ class Post: NSObject {
     
     init(snapshot: FIRDataSnapshot) {
         let snapshotValue = snapshot.value as! [String: AnyObject]
+        
         author = snapshotValue["author"] as! String
         userID = snapshotValue["userID"] as! String
         likes = snapshotValue["likes"] as? Int
         pathToImage = snapshotValue["pathToImage"] as! String
         catagory = snapshotValue["Catagory"] as! String
         postID = snapshotValue["postID"] as! String
+        desc = snapshotValue["author"] as! String
     }
     
     

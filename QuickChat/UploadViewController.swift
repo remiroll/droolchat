@@ -16,6 +16,8 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var postBtn: UIButton!
     @IBOutlet weak var selectBtn: UIButton!
     @IBOutlet weak var catagories: UIPickerView!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var descriptionTextField: UITextField!
     
     
     var picker = UIImagePickerController()
@@ -101,6 +103,8 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                                 "pathToImage" : url.absoluteString,
                                 "likes" : 0,
                                 "author" : FIRAuth.auth()!.currentUser!.email!,
+                                "title" : self.titleTextField.text as String!,
+                                "description" : self.descriptionTextField.text as String!,
                                 "Catagory" : self.selectedcat,
                                 "postID" : key] as [String : Any]
                     
