@@ -12,6 +12,8 @@ import Firebase
 var selectedPostID : String!
 
 class PostPageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var userLbl: UILabel!
@@ -42,7 +44,15 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
         
         //barBtn = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.plain, target: self, action: #selector(UserPageViewController.buttonMethod))
         fetchSinglePost(postID: selectedPostID)
-//        retrieveUser()
+//      retrieveUser()
+        
+        postImageView.layer.shadowColor = UIColor.lightGray.cgColor
+        postImageView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        postImageView.layer.shadowRadius = 2.0
+        postImageView.layer.shadowOpacity = 1.0
+        postImageView.layer.masksToBounds = false
+        postImageView.layer.shadowPath = UIBezierPath(roundedRect: postImageView.bounds, cornerRadius: postImageView.layer.cornerRadius).cgPath
+        postImageView.layer.cornerRadius = 5
 
     }
     
@@ -191,13 +201,17 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
             let post = Post(snapshot: snap)
             
             self.postImageView.image(fromUrl: post.pathToImage)
+           
             
         
             self.ref.child("users/\(post.userID!)").observeSingleEvent(of: .value, with: { (userSnapshot) in
         
                 let snapshotValue = userSnapshot.value as! [String: AnyObject]
                 let name = snapshotValue["name"] as! String
-                self.userLbl.text = name
+                
+                //self.profileImageView.image(fromUrl: user.profilePicLink)
+                //self.profileImageView.downloadImage(from: self.user[0].imgPath!)
+                
                 
             })
         })

@@ -13,9 +13,12 @@ import Firebase
 
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIViewControllerTransitioningDelegate  {
   
     @IBOutlet var glidingView: GlidingCollection!
+    @IBOutlet weak var menuButton: UIButton!
+    let transition = CircularTransition()
+
 
 
    
@@ -39,11 +42,38 @@ class ViewController: UIViewController {
     setup()
     fetchPosts()
     self.customization()
+    menuButton.layer.cornerRadius = menuButton.frame.size.width / 2
     
 
     
     
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        
+                let secondVC = segue.destination as! SecondViewController
+                secondVC.transitioningDelegate = self
+                secondVC.modalPresentationStyle = .custom
+    }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .present
+        transition.startingPoint = menuButton.center
+        transition.circleColor = menuButton.backgroundColor!
+        
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .dismiss
+        transition.startingPoint = menuButton.center
+        transition.circleColor = menuButton.backgroundColor!
+        
+        return transition
+    }
+    
     
     lazy var leftButton: UIBarButtonItem = {
         let image = UIImage.init(named: "default profile")?.withRenderingMode(.alwaysOriginal)
@@ -65,10 +95,10 @@ class ViewController: UIViewController {
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.pushToUserMesssages(notification:)), name: NSNotification.Name(rawValue: "showUserMessages"), object: nil)
         
         //        //right bar button
-        let icon = UIImage.init(named: "buttonfeed")?.withRenderingMode(.alwaysOriginal)
-        let rightButton = UIBarButtonItem.init(image: icon!, style: .plain, target: self, action: #selector(ViewController.viewDidLoad))
+        //let icon = UIImage.init(named: "")?.withRenderingMode(.alwaysOriginal)
+        //let rightButton = UIBarButtonItem.init(image: icon!, style: .plain, target: self, action: #selector(ViewController.viewDidLoad))
         
-        self.navigationItem.rightBarButtonItem = rightButton
+        //self.navigationItem.rightBarButtonItem = rightButton
         //left bar button image fetching
         self.navigationItem.leftBarButtonItem = self.leftButton
         

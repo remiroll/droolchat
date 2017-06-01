@@ -38,7 +38,7 @@ class LandingVC: UIViewController {
         switch viewController {
         case .conversations:
             //let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "feedvc")
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "feedvc") as! NavVC
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "feedvc") as! UITabBarController
           
             self.present(vc, animated: false, completion: nil)
         case .welcome:

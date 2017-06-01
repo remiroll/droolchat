@@ -24,6 +24,7 @@ class CollectionCell: UICollectionViewCell {
      override func awakeFromNib() {
         imageView.layer.cornerRadius = 5
         imageView.clipsToBounds = true
+        //imageView = CGSize(width: round(UIScreen.main.bounds.width * 0.80), height: round(UIScreen.main.bounds.height * 0.45))
     }
     
     

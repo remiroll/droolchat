@@ -222,7 +222,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         //Checks if user has liked the post
         cell.checkIfLiked()
 
-        cell.contentView.layer.backgroundColor = UIColor.clear.cgColor
+        //cell.contentView.layer.backgroundColor = UIColor.clear.cgColor
        
         cell.layer.shadowColor = UIColor.lightGray.cgColor
         cell.layer.shadowOffset = CGSize(width: 0, height: 0)
