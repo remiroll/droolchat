@@ -32,7 +32,9 @@
 		3F43D5471EDD9010005D5EC8 /* GlidingCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F43D53E1EDD9010005D5EC8 /* GlidingCollectionDelegate.swift */; };
 		3F43D5481EDD9010005D5EC8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F43D5411EDD9010005D5EC8 /* Info.plist */; };
 		3F43D54C1EDD9D1E005D5EC8 /* MesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F43D54B1EDD9D1E005D5EC8 /* MesVC.swift */; };
-		3F43D54E1EDDC27B005D5EC8 /* GlidingCollection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F43D54D1EDDC27B005D5EC8 /* GlidingCollection.framework */; };
+		3F46E5381EE2E5F200CBED3C /* GlidingCollection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F43D54D1EDDC27B005D5EC8 /* GlidingCollection.framework */; };
+		3F46E53B1EE2E99800CBED3C /* GlidingCollection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F43D54D1EDDC27B005D5EC8 /* GlidingCollection.framework */; };
+		3F46E53C1EE2E99800CBED3C /* GlidingCollection.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F43D54D1EDDC27B005D5EC8 /* GlidingCollection.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3F499C441ED0A3DB005E87EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F499C431ED0A3DB005E87EB /* GoogleService-Info.plist */; };
 		3F6768381ED1DABD00589BA9 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6768361ED1DABD00589BA9 /* Post.swift */; };
 		3F67684A1ED1DB3600589BA9 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6768441ED1DB3600589BA9 /* UploadViewController.swift */; };
@@ -60,6 +62,20 @@
 		3FE0BC041EDA3023008B427A /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE0BC011EDA3023008B427A /* PostCell.swift */; };
 		62058F6006BD9ACBE0439C4B /* Pods_QuickChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8041C4B4A9DA4F0F53D2BDE /* Pods_QuickChat.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3F46E53D1EE2E99800CBED3C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3F46E53C1EE2E99800CBED3C /* GlidingCollection.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		220698831E066E4900F2284B /* Helper Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Helper Files.swift"; path = "Helper files/Helper Files.swift"; sourceTree = "<group>"; };
@@ -128,8 +144,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				226EFFA11E1BBBCA00B1D185 /* MapKit.framework in Frameworks */,
+				3F46E53B1EE2E99800CBED3C /* GlidingCollection.framework in Frameworks */,
+				3F46E5381EE2E5F200CBED3C /* GlidingCollection.framework in Frameworks */,
 				62058F6006BD9ACBE0439C4B /* Pods_QuickChat.framework in Frameworks */,
-				3F43D54E1EDDC27B005D5EC8 /* GlidingCollection.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +369,7 @@
 				22A92BAB1D59EBD5005D76F7 /* Resources */,
 				62D3364F6C35C0B3DF08236F /* [CP] Embed Pods Frameworks */,
 				59C78960725AB64FF0FC6829 /* [CP] Copy Pods Resources */,
+				3F46E53D1EE2E99800CBED3C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

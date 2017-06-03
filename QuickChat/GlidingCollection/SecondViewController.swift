@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class SecondViewController: UIViewController {
+class SecondViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     var following = [String]()
     
@@ -17,14 +17,17 @@ class SecondViewController: UIViewController {
     var loggedInUser:AnyObject?
     var loggedInUserData:NSDictionary?
     var listFollowers = [NSDictionary?]()//store all the followers
+    
 
 
-    @IBOutlet weak var dismissButton: UIButton!
+
+
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       dismissButton.layer.cornerRadius = dismissButton.frame.size.width / 2
         
         
         self.loggedInUser = FIRAuth.auth()?.currentUser
@@ -57,12 +60,41 @@ class SecondViewController: UIViewController {
         
         
     }
-
-    @IBAction func dismissSecondVC(_ sender: AnyObject) {
-        
-        self.dismiss(animated: true, completion: nil)
     
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        
+//        
+//        
+//        let secondVC = segue.destination as! NavVC
+//        secondVC.transitioningDelegate = self
+//        secondVC.modalPresentationStyle = .custom
+//        
+//
+//    }
+//    
+//
+//    
+//    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        transition.transitionMode = .present
+//        transition.startingPoint = feedButton.center
+//        transition.circleColor = feedButton.backgroundColor!
+//        
+//
+//        
+//        return transition
+//    }
+//    
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        transition.transitionMode = .dismiss
+//        transition.startingPoint = feedButton.center
+//        transition.circleColor = feedButton.backgroundColor!
+//        
+//
+//        
+//        return transition
+//    }
+
+
     
     
     override func didReceiveMemoryWarning() {
@@ -75,23 +107,7 @@ class SecondViewController: UIViewController {
     
 
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-       
-        
-        if(segue.identifier == "showFollowingTableViewController")
-        {
-            let showFollowingTableViewController = segue.destination as! ShowFollowingTableViewController
-            showFollowingTableViewController.users = self.loggedInUser as? FIRUser
-            
-        }
-        else if(segue.identifier == "showFollowersTableViewController")
-        {
-            let showFollowersTableViewController = segue.destination as! ShowFollowersTableViewController
-            showFollowersTableViewController.users = self.loggedInUser as? FIRUser
-            
-        }
-    }
+
     
 
 }

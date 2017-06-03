@@ -23,6 +23,7 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var likeBtn: UIButton!
     @IBOutlet weak var likeLbl: UILabel!
     @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var photoSub: UIView!
     
     
     
@@ -53,6 +54,14 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
         postImageView.layer.masksToBounds = false
         postImageView.layer.shadowPath = UIBezierPath(roundedRect: postImageView.bounds, cornerRadius: postImageView.layer.cornerRadius).cgPath
         postImageView.layer.cornerRadius = 5
+        
+        photoSub.layer.shadowColor = UIColor.lightGray.cgColor
+        photoSub.layer.shadowOffset = CGSize(width: 0, height: 0)
+        photoSub.layer.shadowRadius = 2.0
+        photoSub.layer.shadowOpacity = 1.0
+        photoSub.layer.masksToBounds = false
+        photoSub.layer.shadowPath = UIBezierPath(roundedRect: photoSub.bounds, cornerRadius: postImageView.layer.cornerRadius).cgPath
+        photoSub.layer.cornerRadius = 5
 
     }
     

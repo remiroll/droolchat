@@ -28,8 +28,8 @@ class PostCell: UICollectionViewCell {
     var postsUserID: String!
     
     override func awakeFromNib() {
-        postImage.layer.cornerRadius = 5
-        postImage.clipsToBounds = true
+//        postImage.layer.cornerRadius = 5
+//        postImage.clipsToBounds = true
 //                postImage.layer.shadowColor = UIColor.lightGray.cgColor
 //                postImage.layer.shadowOffset = CGSize(width: 0, height: 2.0)
 //                postImage.layer.shadowRadius = 2.0

@@ -41,6 +41,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate  {
     super.viewDidLoad()
     setup()
     fetchPosts()
+    
     self.customization()
     menuButton.layer.cornerRadius = menuButton.frame.size.width / 2
     
@@ -147,6 +148,9 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate  {
 //        }
 //    }
 
+    
+    
+    
     func fetchPosts(){
         
         //let uid = FIRAuth.auth()!.currentUser!.uid

@@ -25,9 +25,13 @@ import UIKit
 import Firebase
 import AudioToolbox
 
-class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate
+{
     
     //MARK: Properties
+    @IBOutlet weak var menuButton: UIButton!
+    let transition = CircularTransition()
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var alertBottomConstraint: NSLayoutConstraint!
     lazy var leftButton: UIBarButtonItem = {
@@ -46,7 +50,7 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: navigationTitleFont, NSForegroundColorAttributeName: UIColor.white]
         // notification setup
         NotificationCenter.default.addObserver(self, selector: #selector(self.pushToUserMesssages(notification:)), name: NSNotification.Name(rawValue: "showUserMessages"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.showEmailAlert), name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.showEmailAlert), name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
         //right bar button
         let icon = UIImage.init(named: "compose")?.withRenderingMode(.alwaysOriginal)
         let rightButton = UIBarButtonItem.init(image: icon!, style: .plain, target: self, action: #selector(ConversationsVC.showContacts))
@@ -74,6 +78,26 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             })
         }
     }
+    
+
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .present
+        transition.startingPoint = menuButton.center
+        transition.circleColor = menuButton.backgroundColor!
+        
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .dismiss
+        transition.startingPoint = menuButton.center
+        transition.circleColor = menuButton.backgroundColor!
+        
+        return transition
+    }
+    
+
     
     //Downloads conversations
     func fetchData() {
@@ -106,15 +130,15 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     //Show EmailVerification on the bottom
-    func showEmailAlert() {
-        User.checkUserVerification {[weak weakSelf = self] (status) in
-            status == true ? (weakSelf?.alertBottomConstraint.constant = -40) : (weakSelf?.alertBottomConstraint.constant = 0)
-            UIView.animate(withDuration: 0.3) {
-                weakSelf?.view.layoutIfNeeded()
-                weakSelf = nil
-            }
-        }
-    }
+//    func showEmailAlert() {
+//        User.checkUserVerification {[weak weakSelf = self] (status) in
+//            status == true ? (weakSelf?.alertBottomConstraint.constant = -40) : (weakSelf?.alertBottomConstraint.constant = 0)
+//            UIView.animate(withDuration: 0.3) {
+//                weakSelf?.view.layoutIfNeeded()
+//                weakSelf = nil
+//            }
+//        }
+//    }
     
     //Shows Chat viewcontroller with given user
     func pushToUserMesssages(notification: NSNotification) {
@@ -138,6 +162,12 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         if segue.identifier == "segue" {
             let vc = segue.destination as! ChatVC
             vc.currentUser = self.selectedUser
+        }
+        
+        if segue.identifier == "menu" {
+        let secondVC = segue.destination as! SecondViewController
+        secondVC.transitioningDelegate = self
+        secondVC.modalPresentationStyle = .custom
         }
     }
 
@@ -209,11 +239,12 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         super.viewDidLoad()
         self.customization()
         self.fetchData()
+        menuButton.frame.size.width / 2
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.showEmailAlert()
+        //self.showEmailAlert()
     }
     
     override func viewWillAppear(_ animated: Bool) {
