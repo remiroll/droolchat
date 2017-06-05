@@ -53,36 +53,13 @@ class DetailViewController: UIViewController
         categoryImageView.image = image
         navigationItem.title = "Photo"
         
-        self.fetchUsers()
-        self.fetchUserInfo()
         
         
+        
     }
+
     
-    func fetchUsers()  {
-        if let id = FIRAuth.auth()?.currentUser?.uid {
-            User.downloadAllUsers(exceptID: id, completion: {(user) in
-                DispatchQueue.main.async {
-//                    self.items.append(user)
-//                    self.collectionView.reloadData()
-                }
-            })
-        }
-    }
-    
-    //Downloads current user credentials
-    func fetchUserInfo() {
-        if let id = FIRAuth.auth()?.currentUser?.uid {
-            User.downloadAllUsers(exceptID: id, completion: {[weak weakSelf = self] (user) in
-                DispatchQueue.main.async {
-                    weakSelf?.displayNameText.text = user.name
-                    //weakSelf?.emailLabel.text = user.email
-                    weakSelf?.profileImageView.image = user.profilePic
-                    weakSelf = nil
-                }
-            })
-        }
-    }
+
     
 
 }

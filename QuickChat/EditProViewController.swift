@@ -24,11 +24,35 @@ class EditProViewController: UIViewController, UIImagePickerControllerDelegate, 
             
             loadProfileData()
             
+            NotificationCenter.default.addObserver(self, selector: #selector(EditProViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(EditProViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+            
         }
     
-    @IBAction func saveProfileData(_ sender: Any) {
-        updateUsersProfile()
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
     }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+    
+    @IBAction func saveProfileData(_ sender: Any) {
+        
+        AppDelegate.instance().showActivityIndicator()
+        updateUsersProfile()
+        AppDelegate.instance().dismissActivityIndicatos()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func cancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -67,8 +91,7 @@ class EditProViewController: UIViewController, UIImagePickerControllerDelegate, 
                             let newValueForProfile = ["profilePicLink": photoURL, "name": newDisplayName]
                             //        and also to it's database
                             
-                            //self.databaseRef.child("users").child(userID).updateChildValues(newValueForProfile, withCompletionBlock: { (error, reference) in
-                                
+                        
                                 
                             self.databaseRef.child("users").child(userID).child("credentials").updateChildValues(newValueForProfile, withCompletionBlock: { (error, reference) in
                                 
@@ -92,60 +115,6 @@ class EditProViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     
 
-//    func updateUsersProfile(){
-//      //check to see if the user is logged in
-//        if let userID = FIRAuth.auth()?.currentUser?.uid{
-//        //create an access point for the Firebase storage
-//            let storageItem = storageRef.child("profile_images").child(userID)
-//        //get the image uploaded from photo library
-//            guard let image = profileImageView.image else {return}
-//            if let newImage = UIImagePNGRepresentation(image){
-//        //upload to firebase storage
-//                storageItem.put(newImage, metadata: nil, completion: { (metadata, error) in
-//                    if error != nil{
-//                        print(error!)
-//                        return
-//                    }
-//                    storageItem.downloadURL(completion: { (url, error) in
-//                        if error != nil{
-//                            print(error!)
-//                            return
-//                        }
-//                        if let profilePhotoURL = url?.absoluteString{
-//                            guard let newUserName  = self.usernameText.text else {return}
-//                            guard let newDisplayName = self.displayNameText.text else {return}
-//                            guard let newBioText = self.bioText.text else {return}
-//                            
-//                            let newValuesForProfile =
-//                            ["photo": profilePhotoURL,
-//                             "username": newUserName,
-//                             "display": newDisplayName,
-//                             "bio": newBioText]
-//                            
-//                            //update the firebase database for that user
-//                            self.databaseRef.child("profile").child(userID).updateChildValues(newValuesForProfile, withCompletionBlock: { (error, ref) in
-//                                if error != nil{
-//                                    print(error!)
-//                                    return
-//                                }
-//                                print("Profile Successfully Update")
-//                            })
-//                            
-//                        }
-//                    })
-//                })
-//      
-//            }
-//        }
-//    }
-    
-    
-    
-    
-    
-    
-    
-    
     
     
 //set up button action
@@ -183,7 +152,9 @@ class EditProViewController: UIViewController, UIImagePickerControllerDelegate, 
             //if the user is logged in get the profile data
             
             if let userID = FIRAuth.auth()?.currentUser?.uid{
-                databaseRef.child("users").child(userID).observe(.value, with: { (snapshot) in
+                //databaseRef.child().reference().child("users").child(forUserID).child("credentials").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                databaseRef.child("users").child(userID).child("credentials").observe(.value, with: { (snapshot) in
                     
                     //create a dictionary of users profile data
                     let values = snapshot.value as? NSDictionary
@@ -206,14 +177,7 @@ class EditProViewController: UIViewController, UIImagePickerControllerDelegate, 
             }//end of if
         }//end of loadProfileData
     
-    @IBAction func logOutPressed(_ sender: Any) {
-        
-        try! FIRAuth.auth()?.signOut()
-        
-        guard let vc = presentingViewController else { return  }
-        
-        view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-    }
+
     
         }
     

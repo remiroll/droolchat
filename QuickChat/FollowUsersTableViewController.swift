@@ -37,7 +37,12 @@ class FollowUsersTableViewController: UITableViewController,UISearchResultsUpdat
         
             
       
-            
+//        self.ref.child("users/\(post.userID!)").observeSingleEvent(of: .value, with: { (userSnapshot) in
+//            
+//            let snapshotValue = userSnapshot.value as! [String: AnyObject]
+//            let credentials = snapshotValue["credentials"] as! [String:AnyObject]
+//            let name = credentials["name"] as! String
+//            self.userLbl.text = name
        
         
     databaseRef.child("users").queryOrdered(byChild: "name").observe(.childAdded, with: { (snapshot) in

@@ -29,6 +29,9 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
     
     var barBtn: UIBarButtonItem!
     
+    var items = [Conversation]()
+    var selectedUser: User?
+    
     var postID : String!
     let ref = FIRDatabase.database().reference()
     var posts = [Post]()
@@ -55,13 +58,14 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
         postImageView.layer.shadowPath = UIBezierPath(roundedRect: postImageView.bounds, cornerRadius: postImageView.layer.cornerRadius).cgPath
         postImageView.layer.cornerRadius = 5
         
-        photoSub.layer.shadowColor = UIColor.lightGray.cgColor
-        photoSub.layer.shadowOffset = CGSize(width: 0, height: 0)
-        photoSub.layer.shadowRadius = 2.0
-        photoSub.layer.shadowOpacity = 1.0
-        photoSub.layer.masksToBounds = false
-        photoSub.layer.shadowPath = UIBezierPath(roundedRect: photoSub.bounds, cornerRadius: postImageView.layer.cornerRadius).cgPath
-        photoSub.layer.cornerRadius = 5
+                let transparentPixel = UIImage(named: "TransparentPixel")
+                UINavigationBar.appearance().setBackgroundImage(transparentPixel, for: UIBarMetrics.default)
+                UINavigationBar.appearance().shadowImage = transparentPixel
+                UINavigationBar.appearance().backgroundColor = UIColor.clear
+                UINavigationBar.appearance().isTranslucent = true
+        
+        //postImageView.layer.cornerRadius).cgPath
+        //photoSub.layer.cornerRadius = 5
 
     }
     
@@ -71,6 +75,7 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
+ 
     func buttonMethod() {
         
         let alertController = UIAlertController(title: nil, message: "To edit or delete your post select on of the below...", preferredStyle: .actionSheet)
@@ -183,6 +188,8 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
+    
+    
     func updatePost(newDescription: String, newTitle: String){
         let feed = ["userID" : uid,
                     "pathToImage" : posts[0].pathToImage,
@@ -210,6 +217,8 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
             let post = Post(snapshot: snap)
             
             self.postImageView.image(fromUrl: post.pathToImage)
+            self.titleLbl.text = post.title
+            self.descriptionLbl.text = post.desc
            
             
         
@@ -221,7 +230,6 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
                 self.userLbl.text = name
                 
                 
-                //self.profileImageView.image(fromUrl: user.profilePicLink)
                 //self.profileImageView.downloadImage(from: self.user[0].imgPath!)
                 
                 
@@ -229,78 +237,6 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
         })
     }
     
-//    func fetchPost(){
-//        
-//        ref.child("posts").queryOrderedByKey().observeSingleEvent(of: .value, with: { (snap) in
-//            
-//            let postsSnap = snap.value as! [String : AnyObject]
-//            self.posts.removeAll()
-//            
-//            for (_,post) in postsSnap {
-//                if let postsID = post["postID"] as? String {
-//                    
-//                  
-//                    if selectedPostID == postsID {
-//                        
-//                        let post = Post()
-//                        
-//                        
-////                        if let likes = post["likes"] as? Int, let title = post["title"] as? String, let description = post["description"] as? String, let timestamp = post["timestamp"] as? NSNumber, let pathToImage = post["pathToImage"] as? String, let postID = post["postID"] as? String, let userID = post["userID"] as? String {
-////                            
-////                            posst.likes = likes
-////                            posst.title = title
-////                            //posst.desc = description
-////                            posst.timestamp = timestamp
-////                            posst.pathToImage = pathToImage
-////                            posst.postID = postID
-////                            posst.userID = userID
-////                            
-////                            if let people = post["peopleWhoLike"] as? [String : AnyObject] {
-////                                for (_,person) in people {
-////                                    posst.peopleWhoLike.append(person as! String)
-////                                }
-////                            }
-////                            print(posst)
-////                            self.posts.append(posst)
-////                        }
-//                        
-//
-//                        
-//                    }
-//                    
-//                    
-//                    //self.collectionView.reloadData()
-//                }
-//            }
-//        })
-//        
-//        ref.removeAllObservers()
-//    }
-    
-//    func fetchPosts(){
-//        
-//        let uid = FIRAuth.auth()!.currentUser!.uid
-//        let ref = FIRDatabase.database().reference()
-//        
-//        ref.child("posts").queryOrderedByKey().observeSingleEvent(of: .value, with: { snap in
-//            
-//            for snapshot in snap.children {
-//                guard let snapshot = snapshot as? FIRDataSnapshot else { continue }
-//                let post = Post(snapshot: snapshot)
-//                
-//                if uid == post.userID {
-//                    self.posts.append(post)
-//                }
-//                
-//                self.sortPosts()
-//                
-//                self.glidingView.reloadData()
-//                self.collectionView.reloadData()
-//                
-//                self.posts.removeAll()
-//            }
-//        })
-//    }
     
     
     func setData(){
@@ -510,6 +446,16 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
         })
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segue" {
+            let vc = segue.destination as! ChatVC
+            vc.currentUser = self.selectedUser
+        }
+    }
+    
+    @IBAction func messageUser(_ sender: Any) {
+        
+    }
 
 
 

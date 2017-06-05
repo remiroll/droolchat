@@ -1,9 +1,9 @@
 //
 //  Photo.swift
-//  Photos
+//  drool-chat
 //
-//  Created by Duc Tran on 1/19/17.
-//  Copyright © 2017 Developers Academy. All rights reserved.
+//  Created by Alexander Lorimer on 1/19/17.
+//  Copyright © 2017 Alexaner Lorimer. All rights reserved.
 //
 
 import Foundation
@@ -82,6 +82,10 @@ class PhotosLibrary
         return imageNames
     }
     
+
+    
+    
+    
     class func fetchPosts(completion: @escaping ([PhotoCategory]) -> ()){
         
         //let uid = FIRAuth.auth()!.currentUser!.uid
@@ -98,6 +102,8 @@ class PhotosLibrary
                 guard let snapshot = snapshot as? FIRDataSnapshot else { continue }
                 
                 let post = Post(snapshot: snapshot)
+                
+              
                 
                 switch (post.catagory) {
                     case "Recipes":

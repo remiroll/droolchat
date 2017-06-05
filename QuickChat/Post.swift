@@ -33,7 +33,8 @@ class Post: NSObject {
         pathToImage = snapshotValue["pathToImage"] as! String
         catagory = snapshotValue["Catagory"] as! String
         postID = snapshotValue["postID"] as! String
-        desc = snapshotValue["author"] as! String
+        desc = snapshotValue["description"] as! String
+        title = snapshotValue["title"] as! String
     }
     
     

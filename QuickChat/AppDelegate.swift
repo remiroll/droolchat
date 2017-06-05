@@ -70,6 +70,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         
         
+        
+        UINavigationBar.appearance().barTintColor = UIColor(red: 198.0/255.0, green: 43.0/255.0, blue: 70.0/255.0, alpha: 1.0)
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+            //UINavigationBar.appearance().backgroundColor = UIColor(red: 223, green: 97, blue: 119, alpha: 1.0)
+        
 //        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "navigation")!.resizableImage(withCapInsets: UIEdgeInsetsMake(0, 0, 0, 0), resizingMode: .stretch), for: .default)
 //        UINavigationBar.appearance().isTranslucent = false
 //        UINavigationBar.appearance().shadowImage = UIImage()

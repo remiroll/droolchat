@@ -1,9 +1,9 @@
 //
 //  ViewController.swift
-//  GlidingCollectionDemo
+//  drool-chat
 //
-//  Created by Abdurahim Jauzee on 04/03/2017.
-//  Copyright © 2017 Ramotion Inc. All rights reserved.
+//  Created by Alexander Lorimer on 04/03/2017.
+//  Copyright © 2017 Alexander Lorimer. All rights reserved.
 //
 
 import UIKit
@@ -13,11 +13,11 @@ import Firebase
 
 
 
-class ViewController: UIViewController, UIViewControllerTransitioningDelegate  {
+class ViewController: UIViewController {
   
     @IBOutlet var glidingView: GlidingCollection!
-    @IBOutlet weak var menuButton: UIButton!
-    let transition = CircularTransition()
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var displayNameText: UILabel!
 
 
 
@@ -42,118 +42,53 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate  {
     setup()
     fetchPosts()
     
-    self.customization()
-    menuButton.layer.cornerRadius = menuButton.frame.size.width / 2
-    
-
-    
-    
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let userID = FIRAuth.auth()?.currentUser?.uid{
         
-        
-        
-                let secondVC = segue.destination as! SecondViewController
-                secondVC.transitioningDelegate = self
-                secondVC.modalPresentationStyle = .custom
-    }
-    
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionMode = .present
-        transition.startingPoint = menuButton.center
-        transition.circleColor = menuButton.backgroundColor!
-        
-        return transition
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionMode = .dismiss
-        transition.startingPoint = menuButton.center
-        transition.circleColor = menuButton.backgroundColor!
-        
-        return transition
-    }
-    
-    
-    lazy var leftButton: UIBarButtonItem = {
-        let image = UIImage.init(named: "default profile")?.withRenderingMode(.alwaysOriginal)
-        let button  = UIBarButtonItem.init(image: image, style: .plain, target: self, action: #selector(ConversationsVC.showProfile))
-        return button
-    }()
-    var items = [Conversation]()
-    var selectedUser: User?
-    
-    //MARK: Methods
-    func customization()  {
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
-        //NavigationBar customization
-        let navigationTitleFont = UIFont(name: "ArialRoundedMTBold", size: 17)!
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: navigationTitleFont, NSForegroundColorAttributeName: UIColor(red: 97/255, green: 97/255, blue: 97/255, alpha: 1)]
-        
-        // notification setup
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.pushToUserMesssages(notification:)), name: NSNotification.Name(rawValue: "showUserMessages"), object: nil)
-        
-        //        //right bar button
-        //let icon = UIImage.init(named: "")?.withRenderingMode(.alwaysOriginal)
-        //let rightButton = UIBarButtonItem.init(image: icon!, style: .plain, target: self, action: #selector(ViewController.viewDidLoad))
-        
-        //self.navigationItem.rightBarButtonItem = rightButton
-        //left bar button image fetching
-        self.navigationItem.leftBarButtonItem = self.leftButton
-        
-        if let id = FIRAuth.auth()?.currentUser?.uid {
-            User.info(forUserID: id, completion: { [weak weakSelf = self] (user) in
-                let image = user.profilePic
-                let contentSize = CGSize.init(width: 35, height: 35)
-                UIGraphicsBeginImageContextWithOptions(contentSize, false, 0.0)
-                let _  = UIBezierPath.init(roundedRect: CGRect.init(origin: CGPoint.zero, size: contentSize), cornerRadius: 14).addClip()
-                image.draw(in: CGRect(origin: CGPoint.zero, size: contentSize))
-                let path = UIBezierPath.init(roundedRect: CGRect.init(origin: CGPoint.zero, size: contentSize), cornerRadius: 14)
-                path.lineWidth = 2
-                UIColor.white.setStroke()
-                path.stroke()
-                let finalImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!.withRenderingMode(.alwaysOriginal)
-                UIGraphicsEndImageContext()
-                DispatchQueue.main.async {
-                    weakSelf?.leftButton.image = finalImage
-                    weakSelf = nil
-                }
-            })
+        //User name etc
+        databaseRef.child("users").child(userID).child("credentials").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let dictionary = snapshot.value as? NSDictionary
+            
+            let display = dictionary?["name"] as? String ?? "name"
+            if let profileImageURL = dictionary?["profilePicLink"] as? String{
+                
+                let url = URL(string: profileImageURL)
+                
+                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                    if error != nil{
+                        print(error!)
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        self.profileImageView.image = UIImage(data: data!)
+                    }
+                }).resume()
+            }
+            
+            self.displayNameText.text = display
+        }) { (error) in
+            print(error.localizedDescription)
+            return
         }
+        
+        
+        
+        
     }
-    
-    
-    //Shows profile extra view
-    func showProfile() {
-        let info = ["viewType" : ShowExtraView.profile]
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showExtraView"), object: nil, userInfo: info)
-        self.inputView?.isHidden = true
-    }
-    
-    //Shows contacts extra view
-    func showContacts() {
-        let info = ["viewType" : ShowExtraView.contacts]
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showExtraView"), object: nil, userInfo: info)
-    }
-    
-    
-    
-//    //Shows Chat viewcontroller with given user
-//    func pushToUserMesssages(notification: NSNotification) {
-//        if let user = notification.userInfo?["user"] as? User {
-//            self.selectedUser = user
-//            self.performSegue(withIdentifier: "segue", sender: self)
-//        }
-//    }
 
+    }
+    
+
+ 
+    @IBAction func back(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     
     
     func fetchPosts(){
         
-        //let uid = FIRAuth.auth()!.currentUser!.uid
+        let uid = FIRAuth.auth()!.currentUser!.uid
         let ref = FIRDatabase.database().reference()
         
         ref.child("posts").queryOrderedByKey().observeSingleEvent(of: .value, with: { snap in
@@ -162,11 +97,11 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate  {
                 guard let snapshot = snapshot as? FIRDataSnapshot else { continue }
                 let post = Post(snapshot: snapshot)
                 
-//                if uid == post.userID {
-//                    self.posts.append(post)
-//                }
+                if uid == post.userID {
+                    self.posts.append(post)
+                }
                 
-                self.posts.append(post)
+                //self.posts.append(post)
                 
                self.sortPosts()
                
@@ -178,12 +113,13 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate  {
         })
     }
     
+
     
     
-    
-    
+  
     func sortPosts() {
         
+
         var count: Int = -1
         
         for post in posts {
@@ -286,9 +222,11 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
 
     
-    //selectedPostID = self.posts[indexPath.row].postID
-    
-    //performSegue(withIdentifier: "postPage", sender: nil)
+//    selectedPostID = self.posts[indexPath.row].postID
+//    
+//    
+//    
+//    performSegue(withIdentifier: "postPage", sender: self)
 
     
     
@@ -314,4 +252,16 @@ extension ViewController: GlidingCollectionDatasource {
     return postAuthor[index]
   }
   
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }

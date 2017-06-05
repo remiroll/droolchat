@@ -29,8 +29,7 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
 {
     
     //MARK: Properties
-    @IBOutlet weak var menuButton: UIButton!
-    let transition = CircularTransition()
+
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var alertBottomConstraint: NSLayoutConstraint!
@@ -56,7 +55,7 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         let rightButton = UIBarButtonItem.init(image: icon!, style: .plain, target: self, action: #selector(ConversationsVC.showContacts))
         self.navigationItem.rightBarButtonItem = rightButton
         //left bar button image fetching
-        self.navigationItem.leftBarButtonItem = self.leftButton
+//        self.navigationItem.leftBarButtonItem = self.leftButton
         self.tableView.tableFooterView = UIView.init(frame: CGRect.zero)
         if let id = FIRAuth.auth()?.currentUser?.uid {
             User.info(forUserID: id, completion: { [weak weakSelf = self] (user) in
@@ -81,22 +80,7 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
 
     
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionMode = .present
-        transition.startingPoint = menuButton.center
-        transition.circleColor = menuButton.backgroundColor!
-        
-        return transition
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionMode = .dismiss
-        transition.startingPoint = menuButton.center
-        transition.circleColor = menuButton.backgroundColor!
-        
-        return transition
-    }
-    
+
 
     
     //Downloads conversations
@@ -220,8 +204,8 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 cell.nameLabel.font = UIFont(name:"Amatic-Bold", size: 17.0)
                 cell.messageLabel.font = UIFont(name:"Amatic-Bold", size: 14.0)
                 cell.timeLabel.font = UIFont(name:"Amatic-Bold", size: 13.0)
-                cell.profilePic.layer.borderColor = GlobalVariables.blue.cgColor
-                cell.messageLabel.textColor = GlobalVariables.purple
+                cell.profilePic.layer.borderColor = GlobalVariables.red.cgColor
+                cell.messageLabel.textColor = GlobalVariables.red
             }
             return cell
         }
@@ -233,13 +217,17 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             self.performSegue(withIdentifier: "segue", sender: self)
         }
     }
-       
+    
+    @IBAction func cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     //MARK: ViewController lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.customization()
         self.fetchData()
-        menuButton.frame.size.width / 2
+     
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -1,9 +1,9 @@
 //
 //  FeedViewController.swift
-//  EatFlyApp
+//  drool-chat
 //
-//  Created by Marlon Pavanello on 06/05/2017.
-//  Copyright © 2017 Marlon Pavanello. All rights reserved.
+//  Created by Alexander Lorimer on 06/05/2017.
+//  Copyright © 2017 Alexander Lorimer. All rights reserved.
 //
 
 import UIKit
@@ -14,13 +14,6 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @IBOutlet weak var FeedCollectionView: UICollectionView!
 
-    
-
-
-    
-
-    
-    
     var posts = [Post]()
     var user = [User]()
     var following = [String]()
@@ -38,8 +31,6 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         observePosts()
         self.customization()
         
-  
-
         
     }
     
@@ -48,11 +39,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.dismiss(animated: true, completion: nil)
     }
     
-    lazy var leftButton: UIBarButtonItem = {
-        let image = UIImage.init(named: "default profile")?.withRenderingMode(.alwaysOriginal)
-        let button  = UIBarButtonItem.init(image: image, style: .plain, target: self, action: #selector(ConversationsVC.showProfile))
-        return button
-    }()
+
     var items = [Conversation]()
     var selectedUser: User?
     
@@ -60,95 +47,19 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func customization()  {
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
         //NavigationBar customization
-        let navigationTitleFont = UIFont(name: "ArialRoundedMTBold", size: 17)!
+        let navigationTitleFont = UIFont(name: "Amatic-Bold", size: 24)!
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: navigationTitleFont, NSForegroundColorAttributeName: UIColor(red: 97/255, green: 97/255, blue: 97/255, alpha: 1)]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: navigationTitleFont, NSForegroundColorAttributeName: UIColor.white]
         
-        // notification setup
-        //        NotificationCenter.default.addObserver(self, selector: #selector(self.pushToUserMesssages(notification:)), name: NSNotification.Name(rawValue: "showUserMessages"), object: nil)
-        
-        //        //right bar button
-        //let icon = UIImage.init(named: "")?.withRenderingMode(.alwaysOriginal)
-        //let rightButton = UIBarButtonItem.init(image: icon!, style: .plain, target: self, action: #selector(ViewController.viewDidLoad))
-        
-        //self.navigationItem.rightBarButtonItem = rightButton
-        //left bar button image fetching
-        self.navigationItem.leftBarButtonItem = self.leftButton
-        
-        if let id = FIRAuth.auth()?.currentUser?.uid {
-            User.info(forUserID: id, completion: { [weak weakSelf = self] (user) in
-                let image = user.profilePic
-                let contentSize = CGSize.init(width: 35, height: 35)
-                UIGraphicsBeginImageContextWithOptions(contentSize, false, 0.0)
-                let _  = UIBezierPath.init(roundedRect: CGRect.init(origin: CGPoint.zero, size: contentSize), cornerRadius: 14).addClip()
-                image.draw(in: CGRect(origin: CGPoint.zero, size: contentSize))
-                let path = UIBezierPath.init(roundedRect: CGRect.init(origin: CGPoint.zero, size: contentSize), cornerRadius: 14)
-                path.lineWidth = 2
-                UIColor.white.setStroke()
-                path.stroke()
-                let finalImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!.withRenderingMode(.alwaysOriginal)
-                UIGraphicsEndImageContext()
-                DispatchQueue.main.async {
-                    weakSelf?.leftButton.image = finalImage
-                    weakSelf = nil
-                }
-            })
-        }
+
     }
     
-    
-    //Shows profile extra view
-    func showProfile() {
-        let info = ["viewType" : ShowExtraView.profile]
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showExtraView"), object: nil, userInfo: info)
-        self.inputView?.isHidden = true
-    }
-    
-    //Shows contacts extra view
-    func showContacts() {
-        let info = ["viewType" : ShowExtraView.contacts]
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showExtraView"), object: nil, userInfo: info)
-    }
-    
-    
-    
-    //    //Shows Chat viewcontroller with given user
-    //    func pushToUserMesssages(notification: NSNotification) {
-    //        if let user = notification.userInfo?["user"] as? User {
-    //            self.selectedUser = user
-    //            self.performSegue(withIdentifier: "segue", sender: self)
-    //        }
-    //    }
 
     
-//    func observeUsers(){
-//        
-//        //____
-//        
-//        databaseHandle = ref?.child("users").observe(.childAdded, with: { (snapshot) in
-//            if let dictionary = snapshot.value as? [String : AnyObject] {
-//                
-//                let name = dictionary["name"] as! String
-//                let imgPath = dictionary["profilePicLink"] as! String
-//                let userID = dictionary["uid"] as! String
-//                
-//                let profilePic = #imageLiteral(resourceName: "ProfileI")
-//                
-//                let userToShow = User(name: name, id: userID, profilePic: profilePic)
-//                
-//                
-//                self.user.append(userToShow)
-//                
-//                DispatchQueue.main.async(execute: {
-//                    self.FeedCollectionView.reloadData()
-//                })
-//                
-//            }
-//            
-//            
-//            
-//        })
-//    }
+    
+
+    
+
     func info(forUserID: String, completion: @escaping (User) -> Swift.Void) {
         FIRDatabase.database().reference().child("users").child(forUserID).child("credentials").observeSingleEvent(of: .value, with: { (snapshot) in
             if let data = snapshot.value as? [String: String] {
@@ -195,6 +106,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func observePosts() {
         
+        //let uid = FIRAuth.auth()!.currentUser!.uid
         //observeUsers()
         observePostsChildRemoved()
         
@@ -211,6 +123,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 post.desc = dictionary["description"] as! String
                 post.title = dictionary["title"] as! String
                 
+                
                 self.posts.append(post)
                 
                 
@@ -222,6 +135,33 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         })
         
     }
+    
+//    func fetchPosts(){
+//        
+//        let uid = FIRAuth.auth()!.currentUser!.uid
+//        let ref = FIRDatabase.database().reference()
+//        
+//        ref.child("posts").queryOrderedByKey().observeSingleEvent(of: .value, with: { snap in
+//            
+//            for snapshot in snap.children {
+//                guard let snapshot = snapshot as? FIRDataSnapshot else { continue }
+//                let post = Post(snapshot: snapshot)
+//                
+//                if uid == post.userID {
+//                    self.posts.append(post)
+//                }
+//                
+//                self.posts.append(post)
+//                
+//                self.sortPosts()
+//                
+//                self.glidingView.reloadData()
+//                self.collectionView.reloadData()
+//                
+//                self.posts.removeAll()
+//            }
+//        })
+//    }
     
     func observePostsChildRemoved() {
         //
@@ -310,20 +250,16 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         cell.descLabel.text = self.posts[indexPath.row].desc
         
-        //Displays post's date
-//        let timeStampDate = NSDate(timeIntervalSince1970: self.posts[indexPath.row].timestamp.doubleValue)
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "hh:mm a"
-//        cell.dateLabel.text = dateFormatter.string(from: timeStampDate as Date)
+
         
         //Shows either like or unlike button depending on if user has liked the post
-//        for person in self.posts[indexPath.row].peopleWhoLike {
-//            if person == FIRAuth.auth()!.currentUser!.uid {
-//                cell.likeBtn.isHidden = true
-//                cell.unlikeBtn.isHidden = false
-//                break
-//            }
-//        }
+        for person in self.posts[indexPath.row].peopleWhoLike {
+            if person == FIRAuth.auth()!.currentUser!.uid {
+                cell.likeBtn.isHidden = true
+                cell.unlikeBtn.isHidden = false
+                break
+            }
+        }
         
         //Sets posts user profile image
 //        for i in 0...user.count-1 {
