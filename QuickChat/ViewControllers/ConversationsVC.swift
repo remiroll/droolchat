@@ -45,13 +45,13 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     func customization()  {
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
         //NavigationBar customization
-        let navigationTitleFont = UIFont(name: "Amatic-Bold", size: 18)!
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: navigationTitleFont, NSForegroundColorAttributeName: UIColor.white]
+//        let navigationTitleFont = UIFont(name: "Amatic-Bold", size: 18)!
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: navigationTitleFont]
         // notification setup
         NotificationCenter.default.addObserver(self, selector: #selector(self.pushToUserMesssages(notification:)), name: NSNotification.Name(rawValue: "showUserMessages"), object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.showEmailAlert), name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
         //right bar button
-        let icon = UIImage.init(named: "compose")?.withRenderingMode(.alwaysOriginal)
+        let icon = UIImage.init(named: "Search")?.withRenderingMode(.alwaysOriginal)
         let rightButton = UIBarButtonItem.init(image: icon!, style: .plain, target: self, action: #selector(ConversationsVC.showContacts))
         self.navigationItem.rightBarButtonItem = rightButton
         //left bar button image fetching
@@ -149,7 +149,7 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
         
         if segue.identifier == "menu" {
-        let secondVC = segue.destination as! SecondViewController
+        let secondVC = segue.destination as! MenuViewController
         secondVC.transitioningDelegate = self
         secondVC.modalPresentationStyle = .custom
         }

@@ -1,9 +1,13 @@
 //
 //  PostPageViewController.swift
-//  EatFlyApp
 //
-//  Created by Marlon Pavanello (i7240992) on 05/04/2017.
-//  Copyright © 2017 Marlon Pavanello. All rights reserved.
+//  PostCell.swift
+//  drool-chat
+//
+//  Created by Alexander Lorimer on 25/04/2017.
+//  Copyright © 2017 Alexander Lorimer. All rights reserved.
+//
+
 //
 
 import UIKit
@@ -266,37 +270,7 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
 
     }
 
-    func retrieveUser(){
-        
-        ref.child("users").queryOrderedByKey().observeSingleEvent(of: .value, with: { (snapshot) in
-            let users = snapshot.value as! [String : AnyObject]
-            self.user.removeAll()
-            
-            for (_, value) in users {
-                
-                if let uid = self.posts[0].userID {
-                    
-//                    let userToShow = User()
-//                    if let fullName = value["name"] as? String, let imagePath = value["porfilePicLink"] as? String, let userID = value["uid"] as? String {
-//                        if userID == uid {
-//                        
-//                            userToShow.fullName = fullName
-//                            userToShow.imgPath = imagePath
-//                            userToShow.userID = uid
-//                        
-//                            self.user.append(userToShow)
-//                        }
-//                    }
-                    
-                }
-                
-            }
-            //self.FeedCollectionView.reloadData()
-            self.setData()
-        })
-        
-        ref.removeAllObservers()
-    }
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
@@ -461,4 +435,28 @@ class PostPageViewController: UIViewController, UITableViewDelegate, UITableView
 
 
 
+}
+
+extension UIImageView {
+    
+    func downloadImage(from imgURL: String!) {
+        guard imgURL != nil else { return }
+        let url = URLRequest(url: URL(string: imgURL)!)
+        
+        let task = URLSession.shared.dataTask(with: url) {
+            (data, response, error) in
+            
+            if error != nil {
+                print(error!)
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.image = UIImage(data: data!)
+            }
+            
+        }
+        
+        task.resume()
+    }
 }

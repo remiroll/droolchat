@@ -1,9 +1,9 @@
 //
 //  CircularTransition.swift
-//  CircularTransition
+//  drool-chat
 //
-//  Created by Training on 26/08/2016.
-//  Copyright © 2016 Training. All rights reserved.
+//  Created by Alexander Lorimer on 11/02/2017.
+//  Copyright © 2017 Alexander Lorimer. All rights reserved.
 //
 
 import UIKit

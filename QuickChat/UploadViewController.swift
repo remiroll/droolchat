@@ -1,9 +1,9 @@
 //
 //  UploadViewController.swift
-//  InstagramLike
+//  drool-chat
 //
-//  Created by Vasil Nunev on 11/12/2016.
-//  Copyright © 2016 Vasil Nunev. All rights reserved.
+//  Created by Alexander Lorimer on 11/03/2017.
+//  Copyright © 2017 Alexander Lorimer. All rights reserved.
 //
 
 import UIKit

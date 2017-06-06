@@ -1,7 +1,9 @@
 //
 //  EditProViewController.swift
-//  wip_meenagram
+//  drool-chat
 //
+//  Created by Alexander Lorimer on 20/03/2017.
+//  Copyright © 2017 Alexander Lorimer. All rights reserved.
 //
 
 import UIKit

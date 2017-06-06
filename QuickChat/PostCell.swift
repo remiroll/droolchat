@@ -1,9 +1,9 @@
 //
 //  PostCell.swift
-//  EatFlyApp
+//  drool-chat
 //
-//  Created by Marlon Pavanello on 24/02/2017.
-//  Copyright © 2017 Marlon Pavanello. All rights reserved.
+//  Created by Alexander Lorimer on 24/02/2017.
+//  Copyright © 2017 Alexander Lorimer. All rights reserved.
 //
 
 import UIKit

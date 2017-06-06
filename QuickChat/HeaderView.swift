@@ -1,9 +1,9 @@
 //
 //  HeaderView.swift
-//  Photos-DucTran
+//  drool-chat
 //
-//  Created by Duc Tran on 1/23/17.
-//  Copyright © 2017 Developers Academy. All rights reserved.
+//  Created by Alexander Lorimer on 19/02/2017.
+//  Copyright © 2017 Alexander Lorimer. All rights reserved.
 //
 
 import UIKit

@@ -37,12 +37,7 @@
 		3F6768381ED1DABD00589BA9 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6768361ED1DABD00589BA9 /* Post.swift */; };
 		3F67684A1ED1DB3600589BA9 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6768441ED1DB3600589BA9 /* UploadViewController.swift */; };
 		3F67684B1ED1DB3600589BA9 /* EditProViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6768451ED1DB3600589BA9 /* EditProViewController.swift */; };
-		3F67684C1ED1DB3600589BA9 /* FollowUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6768461ED1DB3600589BA9 /* FollowUsersTableViewController.swift */; };
-		3F67684D1ED1DB3600589BA9 /* ShowFollowersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6768471ED1DB3600589BA9 /* ShowFollowersTableViewController.swift */; };
-		3F67684E1ED1DB3600589BA9 /* ShowFollowingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6768481ED1DB3600589BA9 /* ShowFollowingTableViewController.swift */; };
-		3F6768561ED1DE4100589BA9 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6768551ED1DE4100589BA9 /* UserProfileViewController.swift */; };
-		3F67685A1ED1E18600589BA9 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6768591ED1E18600589BA9 /* UsersViewController.swift */; };
-		3F83F0D61EE06EC20084892E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F83F0D51EE06EC20084892E /* SecondViewController.swift */; };
+		3F83F0D61EE06EC20084892E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F83F0D51EE06EC20084892E /* MenuViewController.swift */; };
 		3F83F0D81EE06ED10084892E /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F83F0D71EE06ED10084892E /* CircularTransition.swift */; };
 		3FC545661ED5951B00E1AF3A /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC545651ED5951B00E1AF3A /* Collection+Extension.swift */; };
 		3FC5458A1ED5ACE000E1AF3A /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC545881ED5ACE000E1AF3A /* PhotoCell.swift */; };
@@ -56,7 +51,6 @@
 		3FE0BBE91ED993C6008B427A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE0BBE81ED993C6008B427A /* ViewController.swift */; };
 		3FE0BBFD1EDA2F3F008B427A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE0BBFC1EDA2F3F008B427A /* FeedViewController.swift */; };
 		3FE0BBFF1EDA2FB3008B427A /* PostPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE0BBFE1EDA2FB3008B427A /* PostPageViewController.swift */; };
-		3FE0BC031EDA3023008B427A /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE0BC001EDA3023008B427A /* UserCell.swift */; };
 		3FE0BC041EDA3023008B427A /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE0BC011EDA3023008B427A /* PostCell.swift */; };
 		62058F6006BD9ACBE0439C4B /* Pods_QuickChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8041C4B4A9DA4F0F53D2BDE /* Pods_QuickChat.framework */; };
 /* End PBXBuildFile section */
@@ -95,12 +89,7 @@
 		3F6768361ED1DABD00589BA9 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = QuickChat/Post.swift; sourceTree = "<group>"; };
 		3F6768441ED1DB3600589BA9 /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		3F6768451ED1DB3600589BA9 /* EditProViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProViewController.swift; sourceTree = "<group>"; };
-		3F6768461ED1DB3600589BA9 /* FollowUsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowUsersTableViewController.swift; sourceTree = "<group>"; };
-		3F6768471ED1DB3600589BA9 /* ShowFollowersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowFollowersTableViewController.swift; sourceTree = "<group>"; };
-		3F6768481ED1DB3600589BA9 /* ShowFollowingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowFollowingTableViewController.swift; sourceTree = "<group>"; };
-		3F6768551ED1DE4100589BA9 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
-		3F6768591ED1E18600589BA9 /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
-		3F83F0D51EE06EC20084892E /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		3F83F0D51EE06EC20084892E /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = GlidingCollection/MenuViewController.swift; sourceTree = "<group>"; };
 		3F83F0D71EE06ED10084892E /* CircularTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
 		3FC545651ED5951B00E1AF3A /* Collection+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Collection+Extension.swift"; path = "../../Collection+Extension.swift"; sourceTree = "<group>"; };
 		3FC545881ED5ACE000E1AF3A /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
@@ -115,7 +104,6 @@
 		3FE0BBEA1ED995E3008B427A /* GlidingCollectionDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GlidingCollectionDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		3FE0BBFC1EDA2F3F008B427A /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		3FE0BBFE1EDA2FB3008B427A /* PostPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPageViewController.swift; sourceTree = "<group>"; };
-		3FE0BC001EDA3023008B427A /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		3FE0BC011EDA3023008B427A /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		614F8B4888358059B3DC166B /* Pods-QuickChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuickChat/Pods-QuickChat.debug.xcconfig"; sourceTree = "<group>"; };
 		B8041C4B4A9DA4F0F53D2BDE /* Pods_QuickChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,7 +163,7 @@
 		22A92BA41D59EBD5005D76F7 = {
 			isa = PBXGroup;
 			children = (
-				22A92BAF1D59EBD6005D76F7 /* QuickChat */,
+				22A92BAF1D59EBD6005D76F7 /* drool-chat */,
 				22A92BAE1D59EBD6005D76F7 /* Products */,
 				ADD6E8E924E29AFE4DBB9FB3 /* Pods */,
 				5923406597F4A9DB000B8FF9 /* Frameworks */,
@@ -190,7 +178,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		22A92BAF1D59EBD6005D76F7 /* QuickChat */ = {
+		22A92BAF1D59EBD6005D76F7 /* drool-chat */ = {
 			isa = PBXGroup;
 			children = (
 				3F43D5361EDD9010005D5EC8 /* GlidingCollection */,
@@ -202,13 +190,13 @@
 				224834AF1DB539690019153C /* Model */,
 				224AFAAA1D86900B004E7CCD /* Helper Files */,
 				22A92BB71D59EBD6005D76F7 /* Assets.xcassets */,
-				3FE0BBE81ED993C6008B427A /* ViewController.swift */,
 				22A92BB01D59EBD6005D76F7 /* AppDelegate.swift */,
 				224AFA9C1D867DE7004E7CCD /* Main.storyboard */,
 				22A92BBC1D59EBD6005D76F7 /* Info.plist */,
 				3F499C431ED0A3DB005E87EB /* GoogleService-Info.plist */,
 				22EA578E1E1D28DD0008FFB2 /* newMessage.wav */,
 			);
+			name = "drool-chat";
 			path = QuickChat;
 			sourceTree = "<group>";
 		};
@@ -257,7 +245,6 @@
 		3F67683A1ED1DAC900589BA9 /* Custom Cell */ = {
 			isa = PBXGroup;
 			children = (
-				3FE0BC001EDA3023008B427A /* UserCell.swift */,
 				3FE0BC011EDA3023008B427A /* PostCell.swift */,
 			);
 			name = "Custom Cell";
@@ -266,15 +253,12 @@
 		3F67683F1ED1DAE300589BA9 /* MainViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3F6768591ED1E18600589BA9 /* UsersViewController.swift */,
 				3F6768441ED1DB3600589BA9 /* UploadViewController.swift */,
 				3F6768451ED1DB3600589BA9 /* EditProViewController.swift */,
-				3F6768461ED1DB3600589BA9 /* FollowUsersTableViewController.swift */,
-				3F6768471ED1DB3600589BA9 /* ShowFollowersTableViewController.swift */,
-				3F6768481ED1DB3600589BA9 /* ShowFollowingTableViewController.swift */,
-				3F6768551ED1DE4100589BA9 /* UserProfileViewController.swift */,
 				3FE0BBFC1EDA2F3F008B427A /* FeedViewController.swift */,
 				3FE0BBFE1EDA2FB3008B427A /* PostPageViewController.swift */,
+				3FE0BBE81ED993C6008B427A /* ViewController.swift */,
+				3F83F0D51EE06EC20084892E /* MenuViewController.swift */,
 			);
 			name = MainViewControllers;
 			sourceTree = "<group>";
@@ -283,7 +267,6 @@
 			isa = PBXGroup;
 			children = (
 				3F83F0D71EE06ED10084892E /* CircularTransition.swift */,
-				3F83F0D51EE06EC20084892E /* SecondViewController.swift */,
 			);
 			name = CircularTransition;
 			sourceTree = "<group>";
@@ -484,23 +467,19 @@
 				2274709E1DCCF9BF00645401 /* LandingVC.swift in Sources */,
 				3FE0BBE91ED993C6008B427A /* ViewController.swift in Sources */,
 				3F67684B1ED1DB3600589BA9 /* EditProViewController.swift in Sources */,
-				3F83F0D61EE06EC20084892E /* SecondViewController.swift in Sources */,
+				3F83F0D61EE06EC20084892E /* MenuViewController.swift in Sources */,
 				3FC5458B1ED5ACE000E1AF3A /* HeaderView.swift in Sources */,
 				3F67684A1ED1DB3600589BA9 /* UploadViewController.swift in Sources */,
 				3F43D5431EDD9010005D5EC8 /* GlidingCollection.swift in Sources */,
 				3F43D5451EDD9010005D5EC8 /* GlidingLayout.swift in Sources */,
-				3FE0BC031EDA3023008B427A /* UserCell.swift in Sources */,
-				3F67684C1ED1DB3600589BA9 /* FollowUsersTableViewController.swift in Sources */,
 				3F43D5471EDD9010005D5EC8 /* GlidingCollectionDelegate.swift in Sources */,
 				22A5FC5F1DEB185B00624E2B /* NavVC.swift in Sources */,
 				22B974C01DE9B5DF00E09490 /* Conversation.swift in Sources */,
 				3FE0BBE61ED9938F008B427A /* CollectionCell.swift in Sources */,
 				3F43D5461EDD9010005D5EC8 /* GlidingCollectionDataSource.swift in Sources */,
 				3FC545661ED5951B00E1AF3A /* Collection+Extension.swift in Sources */,
-				3F67684E1ED1DB3600589BA9 /* ShowFollowingTableViewController.swift in Sources */,
 				2217853D1DCD1DAC00A69F88 /* ConversationsVC.swift in Sources */,
 				3FE0BC041EDA3023008B427A /* PostCell.swift in Sources */,
-				3F67684D1ED1DB3600589BA9 /* ShowFollowersTableViewController.swift in Sources */,
 				22A92BB11D59EBD6005D76F7 /* AppDelegate.swift in Sources */,
 				3FC545911ED5AD0700E1AF3A /* Photo.swift in Sources */,
 				224AFAA91D86890A004E7CCD /* WelcomeVC.swift in Sources */,
@@ -509,13 +488,11 @@
 				22873DAA1DC790550021690E /* Message.swift in Sources */,
 				3F43D54C1EDD9D1E005D5EC8 /* MesVC.swift in Sources */,
 				3F43D5421EDD9010005D5EC8 /* Collection.swift in Sources */,
-				3F67685A1ED1E18600589BA9 /* UsersViewController.swift in Sources */,
 				3FC5458A1ED5ACE000E1AF3A /* PhotoCell.swift in Sources */,
 				3FC5459D1ED5D77D00E1AF3A /* PhotosCollectionViewController.swift in Sources */,
 				22EA57911E1D32520008FFB2 /* VCCells.swift in Sources */,
 				3F83F0D81EE06ED10084892E /* CircularTransition.swift in Sources */,
 				3FE0BBFF1EDA2FB3008B427A /* PostPageViewController.swift in Sources */,
-				3F6768561ED1DE4100589BA9 /* UserProfileViewController.swift in Sources */,
 				3FE0BBFD1EDA2F3F008B427A /* FeedViewController.swift in Sources */,
 				224834B11DB539A50019153C /* User.swift in Sources */,
 			);
