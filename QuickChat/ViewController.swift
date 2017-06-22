@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet var glidingView: GlidingCollection!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var displayNameText: UILabel!
+    @IBOutlet weak var dismissButton: UIButton!
 
 
 

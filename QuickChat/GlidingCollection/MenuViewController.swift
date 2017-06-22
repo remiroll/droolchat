@@ -44,6 +44,8 @@ class MenuViewController: UIViewController, UIViewControllerTransitioningDelegat
         transition.startingPoint = menuButton.center
         transition.circleColor = menuButton.backgroundColor!
         
+        
+        
         return transition
     }
     
@@ -51,6 +53,9 @@ class MenuViewController: UIViewController, UIViewControllerTransitioningDelegat
         transition.transitionMode = .dismiss
         transition.startingPoint = menuButton.center
         transition.circleColor = menuButton.backgroundColor!
+        
+        
+        
         
         return transition
     }
@@ -66,6 +71,8 @@ class MenuViewController: UIViewController, UIViewControllerTransitioningDelegat
             let secondVC = segue.destination as! MesVC
             secondVC.transitioningDelegate = self
             secondVC.modalPresentationStyle = .custom
+           
+            //transition.circle = chatButton.backgroundColor
         }
         if segue.identifier == "post" {
             let secondVC = segue.destination as! UploadViewController

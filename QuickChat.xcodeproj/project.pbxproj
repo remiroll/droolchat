@@ -39,6 +39,7 @@
 		3F67684B1ED1DB3600589BA9 /* EditProViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6768451ED1DB3600589BA9 /* EditProViewController.swift */; };
 		3F83F0D61EE06EC20084892E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F83F0D51EE06EC20084892E /* MenuViewController.swift */; };
 		3F83F0D81EE06ED10084892E /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F83F0D71EE06ED10084892E /* CircularTransition.swift */; };
+		3F8FC75E1EEC0A7900EE7108 /* Aileron-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3F8FC75D1EEC0A7900EE7108 /* Aileron-SemiBold.otf */; };
 		3FC545661ED5951B00E1AF3A /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC545651ED5951B00E1AF3A /* Collection+Extension.swift */; };
 		3FC5458A1ED5ACE000E1AF3A /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC545881ED5ACE000E1AF3A /* PhotoCell.swift */; };
 		3FC5458B1ED5ACE000E1AF3A /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC545891ED5ACE000E1AF3A /* HeaderView.swift */; };
@@ -91,6 +92,7 @@
 		3F6768451ED1DB3600589BA9 /* EditProViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProViewController.swift; sourceTree = "<group>"; };
 		3F83F0D51EE06EC20084892E /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = GlidingCollection/MenuViewController.swift; sourceTree = "<group>"; };
 		3F83F0D71EE06ED10084892E /* CircularTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
+		3F8FC75D1EEC0A7900EE7108 /* Aileron-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aileron-SemiBold.otf"; sourceTree = "<group>"; };
 		3FC545651ED5951B00E1AF3A /* Collection+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Collection+Extension.swift"; path = "../../Collection+Extension.swift"; sourceTree = "<group>"; };
 		3FC545881ED5ACE000E1AF3A /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		3FC545891ED5ACE000E1AF3A /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				3F0E5B091EDED82A007DEC22 /* Amatic-Bold.ttf */,
 				3F0E5B0A1EDED82A007DEC22 /* AmaticSC-Regular.ttf */,
 				3FE0BBD81ED98E86008B427A /* Lucida Sans Regular.ttf */,
+				3F8FC75D1EEC0A7900EE7108 /* Aileron-SemiBold.otf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				3F0E5B0B1EDED82A007DEC22 /* Amatic-Bold.ttf in Resources */,
 				22A92BB81D59EBD6005D76F7 /* Assets.xcassets in Resources */,
 				3F499C441ED0A3DB005E87EB /* GoogleService-Info.plist in Resources */,
+				3F8FC75E1EEC0A7900EE7108 /* Aileron-SemiBold.otf in Resources */,
 				3FE0BBD91ED98E86008B427A /* Lucida Sans Regular.ttf in Resources */,
 				3FE0BBE71ED9938F008B427A /* CollectionCell.xib in Resources */,
 				3F0E5B0C1EDED82A007DEC22 /* AmaticSC-Regular.ttf in Resources */,

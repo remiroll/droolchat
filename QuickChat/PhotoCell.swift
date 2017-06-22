@@ -15,8 +15,8 @@ class PhotoCell: UICollectionViewCell
     override func awakeFromNib() {
 //        photoImageView.layer.cornerRadius = 5
 //        photoImageView.clipsToBounds = true
-        photoImageView.layer.borderWidth = 6.0
-        photoImageView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 0.1).cgColor
+//        photoImageView.layer.borderWidth = 6.0
+//        photoImageView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 0.1).cgColor
 
 
     }

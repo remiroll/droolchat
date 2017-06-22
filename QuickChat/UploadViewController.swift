@@ -67,6 +67,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.dismiss(animated: true, completion: nil)
     }
     
+        
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -137,8 +138,10 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                     ref.child("posts").updateChildValues(postFeed)
                     AppDelegate.instance().dismissActivityIndicatos()
                     
-                    self.dismiss(animated: true, completion: nil)
+                    
                 }
+                
+                self.dismiss(animated: true, completion: nil)
             })
         
         }
